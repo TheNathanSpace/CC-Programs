@@ -17,7 +17,7 @@ function ChangeDirection(isRandom)
 	turning = true
 end
 
-function DetermineMovement()
+function DetermineMovement() -- Only running like every 5 ticks or something
 	if(turning) then
 		if(not (facing == turnTo)) then
 			turtle.turnRight()
@@ -37,6 +37,7 @@ function DetermineMovement()
 	
 	print("Gonna move")
 	if(moveChance >= 5) then
+		print("Not increasing")
 		if(turnChance >= 10) then
 			ChangeDirection(true)
 			turnChance = 0
