@@ -28,4 +28,4 @@ function Reset()
 	blacklistedTop = false
 end
 
-return {CheckBlacklist = CheckBlacklist, Reset = Reset}
+return {CheckBlacklist = CheckBlacklist, blacklistedTop = blacklistedTop, blacklistedFront = blacklistedFront, Reset = Reset}

@@ -50,4 +50,4 @@ end
 function Reset()
 end
 
-return {GetInventory = GetInventory, CheckForItems = CheckForItems, Reset = Reset}
+return {GetInventory = GetInventory, CheckForItems = CheckForItems, health = health, Reset = Reset}
