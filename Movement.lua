@@ -35,6 +35,7 @@ function DetermineMovement()
 		turnChance = 101
 	end
 	
+	print("Gonna move")
 	if(moveChance >= 5) then
 		if(turnChance >= 10) then
 			ChangeDirection(true)

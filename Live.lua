@@ -20,6 +20,7 @@ function Reset()
 end
 
 function Tick()
+	print("Tick")
     ItemsAPI.CheckForItems()
 	MovementAPI.DetermineMovement()
 	DrawDisplay()
