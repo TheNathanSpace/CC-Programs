@@ -49,3 +49,5 @@ function DetermineMovement()
 		moveChance = moveChance + 1
 	end
 end
+
+return {DetermineMovement = DetermineMovement}

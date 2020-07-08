@@ -27,3 +27,5 @@ function Reset()
 	blacklistedFront = false
 	blacklistedTop = false
 end
+
+return {CheckBlacklist = CheckBlacklist, Reset = Reset}

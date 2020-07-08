@@ -28,7 +28,6 @@ end
 function CheckForItems()
 	local oldBricks = GetInventory("brick") -- Count bricks
 	
-	
 	WorldAPI.CheckBlacklist()
 
     if(not WorldAPI.blacklistedFront) then -- Picks up items
@@ -50,3 +49,5 @@ end
 
 function Reset()
 end
+
+return {GetInventory = GetInventory, CheckForItems = CheckForItems, Reset = Reset}
