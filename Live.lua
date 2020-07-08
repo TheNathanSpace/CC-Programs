@@ -12,7 +12,7 @@ function DrawDisplay()
 --	if(not (ItemsAPI.health <= 0)) then
 --		print("Health: ", ItemsAPI.health)
 	print(MovementAPI.moveChance)
-	end
+--	end
 end
 
 function Reset()
