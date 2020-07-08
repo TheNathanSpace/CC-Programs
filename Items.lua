@@ -1,8 +1,6 @@
 health = 50
 local WorldAPI = require("WorldAPI")
 
--- Test to see how fast it updates bro
-
 function Scream()
 	local sounds = {"quark:entity.stoneling.die"}
 	local key = math.random(1, 1)
