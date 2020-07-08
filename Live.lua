@@ -1,8 +1,8 @@
 shell.run("label", "set", "Lenny")
 
-os.loadAPI("WorldAPI")
-os.loadAPI("MovementAPI")
-os.loadAPI("ItemsAPI")
+local WorldAPI = require("WorldAPI")
+local MovementAPI = require("MovementAPI")
+local ItemsAPI = require("ItemsAPI")
 
 term.clear()
 

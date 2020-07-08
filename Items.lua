@@ -1,4 +1,5 @@
 health = 50
+local WorldAPI = require("WorldAPI")
 
 function Scream()
 	local sounds = {"quark:entity.stoneling.die"}
@@ -8,8 +9,25 @@ function Scream()
     peripheral.find("speaker").playSound(sound, math.random(0, 3), math.random(0, 2))
 end
 
+function GetInventory(itemString)
+	local itemCount = 0
+	
+	for i = 1, 16 do
+		if(turtle.getItemDetail(i)) then
+			local name = turtle.getItemDetail(i).name
+			if(string.find(name, itemString)) then
+				local count = turtle.getItemDetail(i).count
+				itemCount = itemCount + count
+			end
+		end
+	end
+	
+	return itemCount
+end
+
 function CheckForItems()
 	local oldBricks = GetInventory("brick") -- Count bricks
+	
 	
 	WorldAPI.CheckBlacklist()
 
@@ -28,23 +46,6 @@ function CheckForItems()
 		local change = newBricks - oldBricks -- Difference
 		health = health - change
     end
-end
-
-function GetInventory(item)
-	local itemCount = 0
-	
-	for i = 1, 16 do
-		local isNil = (turtle.getItemDetail(i) == nil)
-		if(not isNil) then
-			local name = turtle.getItemDetail(i).name
-			local count = turtle.getItemDetail(i).count
-			if(string.match(name, item)) then
-				itemCount = itemCount + count
-			end
-		end
-	end
-	
-	return itemCount
 end
 
 function Reset()

@@ -6,8 +6,8 @@ function CheckBlacklist()
 	
     local inspectSuccess, inspectData = turtle.inspect()
     if(inspectSuccess) then
-		for i = 1, 2 do
-			if(string.match(inspectData.name, blacklistedBlocks[i])) then
+		for i = 1, 3 do
+			if(string.find(inspectData.name, blacklistedBlocks[i])) then
 				blacklistedFront = true
 			end
 		end
@@ -15,8 +15,8 @@ function CheckBlacklist()
 	
 	local inspectSuccess, inspectData = turtle.inspectUp()
     if(inspectSuccess) then
-		for i = 1, 2 do
-			if(string.match(inspectData.name, blacklistedBlocks[i])) then
+		for i = 1, 3 do
+			if(string.find(inspectData.name, blacklistedBlocks[i])) then
 				blacklistedTop = true
 			end
 		end
