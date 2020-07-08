@@ -8,9 +8,10 @@ term.clear()
 
 function DrawDisplay()
 	term.clear()
-	print("Mood: ", "Bad go away dexter")
-	if(not (ItemsAPI.health <= 0)) then
-		print("Health: ", ItemsAPI.health)
+--	print("Mood: ", "Bad go away dexter")
+--	if(not (ItemsAPI.health <= 0)) then
+--		print("Health: ", ItemsAPI.health)
+	print(MovementAPI.moveChance)
 	end
 end
 

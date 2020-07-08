@@ -50,4 +50,4 @@ function DetermineMovement()
 	end
 end
 
-return {DetermineMovement = DetermineMovement}
+return {DetermineMovement = DetermineMovement, moveChance = moveChance}
