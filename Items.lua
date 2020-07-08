@@ -1,5 +1,7 @@
 health = 50
 
+-- Does this show up?
+
 function Scream()
 	local sounds = {"quark:entity.stoneling.die"}
 	local key = math.random(1, 1)
