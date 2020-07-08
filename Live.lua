@@ -21,7 +21,7 @@ end
 
 function Tick()
     ItemsAPI.CheckForItems()
-	print(MovementAPI.DetermineMovement())
+	MovementAPI.DetermineMovement()
 	DrawDisplay()
     Reset()
 end

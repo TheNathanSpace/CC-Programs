@@ -18,6 +18,7 @@ function ChangeDirection(isRandom)
 end
 
 function DetermineMovement()
+	print("Yeet)
 	if(turning) then
 		if(not (facing == turnTo)) then
 			turtle.turnRight()
@@ -49,7 +50,6 @@ function DetermineMovement()
 		moveChance = moveChance + 1
 	end
 	
-	return true
 end
 
 return {DetermineMovement = DetermineMovement, moveChance = moveChance}
