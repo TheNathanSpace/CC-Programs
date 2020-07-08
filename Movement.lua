@@ -48,6 +48,8 @@ function DetermineMovement()
 	else
 		moveChance = moveChance + 1
 	end
+	
+	return true
 end
 
 return {DetermineMovement = DetermineMovement, moveChance = moveChance}

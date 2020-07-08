@@ -11,7 +11,6 @@ function DrawDisplay()
 --	print("Mood: ", "Bad go away dexter")
 --	if(not (ItemsAPI.health <= 0)) then
 --		print("Health: ", ItemsAPI.health)
-	print(MovementAPI.moveChance)
 --	end
 end
 
@@ -22,7 +21,7 @@ end
 
 function Tick()
     ItemsAPI.CheckForItems()
-	MovementAPI.DetermineMovement()
+	print(MovementAPI.DetermineMovement())
 	DrawDisplay()
     Reset()
 end
