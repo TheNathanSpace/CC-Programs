@@ -1,3 +1,7 @@
+function trim1(s)
+   return (s:gsub("^%s*(.-)%s*$", "%1"))
+end
+
 shell.run("delete", "live")
 shell.run("delete", "WorldAPI")
 shell.run("delete", "MovementAPI")
@@ -13,7 +17,8 @@ shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Live.lua", "live
 
 local liveFile = fs.open("live", "r")
 local line = liveFile.readLine()
-local version = string.gsub(line, "%-%- ", "")
+local version = string.gsub(line, "-", "")
+version = trim1(version)
 
 term.clear()
 
