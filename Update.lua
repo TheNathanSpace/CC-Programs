@@ -10,3 +10,11 @@ shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Items.lua", "Ite
 shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Update.lua", "Update")
 
 shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Live.lua", "live")
+
+local liveFile = fs.open("live", "r")
+local line = liveFile.readLine()
+local version = string.gsub(line, "-- ", "")
+
+term.clear()
+
+print(version)
