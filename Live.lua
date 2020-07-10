@@ -9,7 +9,7 @@ local ItemsAPI = require("ItemsAPI")
 term.clear()
 
 function DrawDisplay()
-	term.clear()
+--	term.clear()
 --	print("Mood: ", "Bad go away dexter")
 --	if(not (ItemsAPI.health <= 0)) then
 --		print("Health: ", ItemsAPI.health)
@@ -23,6 +23,7 @@ function Reset()
 end
 
 function Tick()
+	print("------")
 	print("Tick")
     ItemsAPI.CheckForItems()
 	MovementAPI.DetermineMovement()
