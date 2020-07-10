@@ -1,4 +1,4 @@
--- Version 1.0
+-- Version 0.1.1
 
 shell.run("label", "set", "Lenny")
 
@@ -9,7 +9,7 @@ local ItemsAPI = require("ItemsAPI")
 term.clear()
 
 function DrawDisplay()
---	term.clear()
+	term.clear()
 --	print("Mood: ", "Bad go away dexter")
 --	if(not (ItemsAPI.health <= 0)) then
 --		print("Health: ", ItemsAPI.health)
