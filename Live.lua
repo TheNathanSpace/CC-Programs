@@ -1,4 +1,4 @@
--- Live: Version 0.1.3
+-- Live: Version 0.1.4
 
 shell.run("label", "set", "Lenny")
 
@@ -14,6 +14,7 @@ function DrawDisplay()
 --	if(not (ItemsAPI.health <= 0)) then
 --		print("Health: ", ItemsAPI.health)
 --	end
+	print(MovementAPI.moveChance)
 end
 
 function Reset()
