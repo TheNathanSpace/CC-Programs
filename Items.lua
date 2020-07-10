@@ -26,7 +26,7 @@ function GetInventory(itemString)
 end
 
 function CheckForItems()
-	print("Check for items")
+	print("CheckForItems")
 	local oldBricks = GetInventory("brick") -- Count bricks
 	
 	WorldAPI.CheckBlacklist()
