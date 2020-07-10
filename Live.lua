@@ -14,7 +14,6 @@ function DrawDisplay()
 --	if(not (ItemsAPI.health <= 0)) then
 --		print("Health: ", ItemsAPI.health)
 --	end
-	print(MovementAPI.moveChance)
 end
 
 function Reset()
@@ -29,6 +28,8 @@ function Tick()
     ItemsAPI.CheckForItems()
 	MovementAPI.DetermineMovement()
 	DrawDisplay()
+	print(MovementAPI.moveChance)
+	print("------")
     Reset()
 end
 
