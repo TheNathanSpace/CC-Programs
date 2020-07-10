@@ -23,6 +23,7 @@ function Reset()
 end
 
 function Tick()
+	term.clear()
 	print("------")
 	print("Tick")
     ItemsAPI.CheckForItems()
@@ -39,5 +40,3 @@ while true do
 		break
 	end
 end
-
--- To do: Change this to automatically pull from Github. Easier that way to update.
