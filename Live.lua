@@ -1,4 +1,4 @@
--- Live: Version 0.1.5
+-- Live: Version 0.1.6
 
 shell.run("label", "set", "Lenny")
 
