@@ -17,9 +17,15 @@ local root = htmlparser.parse(full_html)
 
 local table_element = root:select("tbody")
 
-local nodes = table_element.nodes
+for _,e in ipairs(table_element) do
+	print(e.name)
+	-- local subs = e(subselectorstring)
+	-- for _,sub in ipairs(subs) do
+		-- print("", sub.name)
+	-- end
+end
 
-print(#nodes)
+local nodes = table_element.nodes
 
 --for i = 1, #nodes, 1 do 
 --   print(nodes[i].name) 
