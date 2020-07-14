@@ -25,12 +25,3 @@ version = trim1(version)
 term.clear()
 
 print(version)
-
--- Start new
-
-local htmlstring = 
-
-local root = htmlparser.parse(htmlstring)
-local elements = root:select(selectorstring)
-
--- http://computercraft.info/wiki/Http.get
