@@ -1,3 +1,5 @@
+local htmlparser = require("htmlparser")
+
 function trim1(s)
    return (s:gsub("^%s*(.-)%s*$", "%1"))
 end
@@ -23,3 +25,12 @@ version = trim1(version)
 term.clear()
 
 print(version)
+
+-- Start new
+
+local htmlstring = 
+
+local root = htmlparser.parse(htmlstring)
+local elements = root:select(selectorstring)
+
+-- http://computercraft.info/wiki/Http.get
