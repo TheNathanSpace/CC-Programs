@@ -23,7 +23,6 @@ local table_element = root:select(".js-file-line-container")[1]
 
 local line_arry = {}
 
-local live_file = fs.open("live", "a")
 
 for _,e in ipairs(table_element.nodes) do
 	table.insert(line_arry, e:getcontent())
@@ -31,6 +30,8 @@ end
 
 shell.run("delete", "live")
 
+local live_file = fs.open("live", "a")
+
 for i = 0, #line_arry do
-	live_file.append(line_arry[i]
+	live_file.append(line_arry[i])
 end
