@@ -1,3 +1,8 @@
+shell.run("delete", "live")
+shell.run("delete", "htmlparser.lua")
+shell.run("delete", "htmlparser/ElementNode.lua")
+shell.run("delete", "htmlparser/voidelements.lua")
+
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/lua-htmlparser/htmlparser.lua", "htmlparser.lua")
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/lua-htmlparser/htmlparser/ElementNode.lua", "htmlparser/ElementNode.lua")
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/lua-htmlparser/htmlparser/voidelements.lua", "htmlparser/voidelements.lua")
@@ -14,6 +19,8 @@ local table_element = root:select("tbody")
 
 local nodes = table_element.nodes
 
-for i = 1, #nodes, 1 do 
-   print(nodes[i].name) 
-end
+print(#nodes)
+
+--for i = 1, #nodes, 1 do 
+--   print(nodes[i].name) 
+--end
