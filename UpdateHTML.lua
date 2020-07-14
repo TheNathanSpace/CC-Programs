@@ -11,22 +11,26 @@ local htmlparser = require("htmlparser")
 
 shell.run("wget", "https://github.com/TheKingElessar/CC-Programs/blob/master/Live.lua", "live")
 
-local full_html = fs.open("live", "r").readAll()
+local live_file = fs.open("live", "r")
+
+local full_html = live_file.readAll()
+
+live_file.close()
 
 local root = htmlparser.parse(full_html)
 
-local table_element = root:select("tbody")
+local table_element = root:select(".js-file-line-container")[1]
 
-for _,e in ipairs(table_element) do
-	print(e.name)
-	-- local subs = e(subselectorstring)
-	-- for _,sub in ipairs(subs) do
-		-- print("", sub.name)
-	-- end
+local line_arry = {}
+
+local live_file = fs.open("live", "a")
+
+for _,e in ipairs(table_element.nodes) do
+	table.insert(line_arry, e:getcontent())
 end
 
-local nodes = table_element.nodes
+shell.run("delete", "live")
 
---for i = 1, #nodes, 1 do 
---   print(nodes[i].name) 
---end
+for i = 0, #line_arry do
+	live_file.append(line_arry[i]
+end
