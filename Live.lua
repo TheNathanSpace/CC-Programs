@@ -2,33 +2,33 @@
 
 shell.run("label", "set", "Lenny")
 
-local WorldAPI = require("WorldAPI")
-local MovementAPI = require("MovementAPI")
-local ItemsAPI = require("ItemsAPI")
+local World = require("World")
+local Movement = require("Movement")
+local Items = require("Items")
 
 term.clear()
 
 function DrawDisplay()
 --	term.clear()
 --	print("Mood: ", "Bad go away dexter")
---	if(not (ItemsAPI.health <= 0)) then
---		print("Health: ", ItemsAPI.health)
+--	if(not (Items.health <= 0)) then
+--		print("Health: ", Items.health)
 --	end
 end
 
 function Reset()
-	WorldAPI.Reset()
-    ItemsAPI.Reset()
+	World.Reset()
+    Items.Reset()
 end
 
 function Tick()
 	term.clear()
 	print("------")
 	print("Tick")
-    ItemsAPI.CheckForItems()
-	MovementAPI.DetermineMovement()
+    Items.CheckForItems()
+	Movement.DetermineMovement()
 	DrawDisplay()
-	print(MovementAPI.moveChance)
+	print(Movement.moveChance)
 	print("------")
     Reset()
 end
@@ -36,7 +36,7 @@ end
 while true do
     Tick()
 	
-	if(ItemsAPI.health <= 0) then
+	if(Items.health <= 0) then
 		print("He has killed me, mother")
 		break
 	end

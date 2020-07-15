@@ -1,3 +1,5 @@
+-- Util: Version 0.1.0
+
 function has_value (tab, val)
     for index, value in ipairs(tab) do
         if value == val then

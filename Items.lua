@@ -1,5 +1,7 @@
+-- Items: Version 0.1.0
+
 health = 50
-local WorldAPI = require("WorldAPI")
+local World = require("World")
 
 function Scream()
 	local sounds = {"quark:entity.stoneling.die"}
@@ -29,13 +31,13 @@ function CheckForItems()
 	print("CheckForItems")
 	local oldBricks = GetInventory("brick") -- Count bricks
 	
-	WorldAPI.CheckBlacklist()
+	World.CheckBlacklist()
 
-    if(not WorldAPI.blacklistedFront) then -- Picks up items
+    if(not World.blacklistedFront) then -- Picks up items
         local suckForward = turtle.suck()
     end
 	
-    if(not WorldAPI.blacklistedTop) then
+    if(not World.blacklistedTop) then
         local suckUp = turtle.suckUp()
     end
 
