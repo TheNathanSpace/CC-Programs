@@ -35,4 +35,4 @@ function printTable(tableObject)
 	return textutils.serialize(tableObject)
 end
 
-return {has_value = has_value, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable printTable = printTable}
+return {has_value = has_value, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable, printTable = printTable}

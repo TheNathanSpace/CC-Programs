@@ -8,13 +8,13 @@ shell.run("delete", "Movement")
 shell.run("delete", "Items")
 shell.run("delete", "Update")
 
-shell.run("wget", "https://thekingelessar.github.io/CC-Programs/World.lua", "World")
-shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Movement.lua", "Movement")
-shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Items.lua", "Items")
-shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Update.lua", "Update")
-shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Util.lua", "Util")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/World.lua", "World")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Movement.lua", "Movement")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Items.lua", "Items")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Update.lua", "Update")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Util.lua", "Util")
 
-shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Live.lua", "live")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Live.lua", "live")
 
 local fileList = {"live", "World", "Movement", "Items", "Update", "Util"}
 
