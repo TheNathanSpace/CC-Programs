@@ -1,4 +1,4 @@
--- 0.1.0
+-- 0.1.1
 
 health = 50
 local World = require("World")
@@ -28,7 +28,6 @@ function GetInventory(itemString)
 end
 
 function CheckForItems()
-	print("CheckForItems")
 	local oldBricks = GetInventory("brick") -- Count bricks
 	
 	World.CheckBlacklist()

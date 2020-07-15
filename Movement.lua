@@ -1,4 +1,4 @@
--- 0.1.0
+-- 0.1.1
 
 x = 1672
 y = 42
@@ -20,7 +20,6 @@ function ChangeDirection(isRandom)
 end
 
 function DetermineMovement() -- Only running like every 5 ticks or something
-	print("DetermineMovement")
 	if(turning) then
 		if(not (facing == turnTo)) then
 			turtle.turnRight()

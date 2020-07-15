@@ -1,4 +1,4 @@
--- 0.1.8
+-- 0.1.9
 
 local Util = require("Util")
 
@@ -40,7 +40,7 @@ for _,i in ipairs(fileList) do
 
 
 	if not (previousVersionsTable[i] == version) then
-		print(i, ": ", version, " (prev. ", previousVersionsTable[i])
+		print(i, ": ", version, " (prev. ", previousVersionsTable[i], ")")
 	else
 		print(i, " version: ", version)
 	end

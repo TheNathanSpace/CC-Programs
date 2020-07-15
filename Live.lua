@@ -1,4 +1,4 @@
--- 0.1.14
+-- 0.1.15
 
 shell.run("label", "set", "Lenny")
 
@@ -9,7 +9,6 @@ local Items = require("Items")
 term.clear()
 
 function DrawDisplay()
---	term.clear()
 --	print("Mood: ", "Bad go away dexter")
 --	if(not (Items.health <= 0)) then
 --		print("Health: ", Items.health)
@@ -19,17 +18,15 @@ end
 function Reset()
 	World.Reset()
 	Items.Reset()
+	term.clear()
 end
 
 function Tick()
-	term.clear()
-	print("------")
-	print("Tick")
 	Items.CheckForItems()
 	Movement.DetermineMovement()
+	print(World.blacklistedTop)
+	print(World.blacklistedFront)
 	DrawDisplay()
-	print(Movement.moveChance)
-	print("------")
 	Reset()
 end
 
