@@ -20,28 +20,20 @@ local fileList = {"live", "World", "Movement", "Items", "Update", "Util"}
 
 term.clear()
 
-local previousVersionsString = nil
+local previousVersionsTable = nil
 
 if fs.exists("VersionHistory.txt") then
-	local versionHistory = fs.open("VersionHistory.txt", "r")
-	local previousVersionsString = versionHistory.readLine()
+	previousVersionsTable = Util.loadTable("VersionHistory.txt")
 end
 
 if Util.isEmpty(previousVersionsString) then
-	local versionHistory = fs.open("VersionHistory.txt", "w")
 	local previousVersionsTable = {World = "0", Movement = "0", Items = "0", Update = "0", Util = "0", live = "0"}
-	versionHistory.write(table.tostring(previousVersionsTable)
-	versionHistory.close()
+	Util.saveTable(previousVersionsTable, "VersionHistory.txt")
 	
-	local versionHistory = fs.open("VersionHistory.txt", "r")
-	local previousVersionsString = versionHistory.readLine()
-	print("Was empty. Using ", previousVersionsString)
+	print("Was empty. Using ", previousVersionsTable)
 end
 
-print(previousVersionsString)
-local previousVersionsTable = load(previousVersionsString)()
-
-versionHistory.close()
+print(Util.printTable(previousVersionsTable))
 
 for _,i in ipairs(fileList) do
 
@@ -60,7 +52,4 @@ for _,i in ipairs(fileList) do
 	previousVersionsTable[i] = version
 end
 
-local versionHistory = fs.open("VersionHistory.txt", "w")
-
-versionHistory.write(table.tostring(previousVersionsTable))
-versionHistory.close()
+Util.saveTable(previousVersionsTable, "VersionHistory.txt")

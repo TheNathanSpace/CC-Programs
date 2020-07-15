@@ -18,23 +18,23 @@ end
 
 function Reset()
 	World.Reset()
-    Items.Reset()
+	Items.Reset()
 end
 
 function Tick()
 	term.clear()
 	print("------")
 	print("Tick")
-    Items.CheckForItems()
+	Items.CheckForItems()
 	Movement.DetermineMovement()
 	DrawDisplay()
 	print(Movement.moveChance)
 	print("------")
-    Reset()
+	Reset()
 end
 
 while true do
-    Tick()
+	Tick()
 	
 	if(Items.health <= 0) then
 		print("He has killed me, mother")

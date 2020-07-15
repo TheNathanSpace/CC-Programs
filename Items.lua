@@ -8,7 +8,7 @@ function Scream()
 	local key = math.random(1, 1)
 	local sound = sounds[key]
 
-    peripheral.find("speaker").playSound(sound, math.random(0, 3), math.random(0, 2))
+	peripheral.find("speaker").playSound(sound, math.random(0, 3), math.random(0, 2))
 end
 
 function GetInventory(itemString)
@@ -33,21 +33,21 @@ function CheckForItems()
 	
 	World.CheckBlacklist()
 
-    if(not World.blacklistedFront) then -- Picks up items
-        local suckForward = turtle.suck()
-    end
+	if(not World.blacklistedFront) then -- Picks up items
+		local suckForward = turtle.suck()
+	end
 	
-    if(not World.blacklistedTop) then
-        local suckUp = turtle.suckUp()
-    end
+	if(not World.blacklistedTop) then
+		local suckUp = turtle.suckUp()
+	end
 
 	local newBricks = GetInventory("brick") -- Counts bricks
 	
-    if(newBricks > oldBricks) then -- If picked up bricks
-        Scream()
+	if(newBricks > oldBricks) then -- If picked up bricks
+		Scream()
 		local change = newBricks - oldBricks -- Difference
 		health = health - change
-    end
+	end
 end
 
 function Reset()
