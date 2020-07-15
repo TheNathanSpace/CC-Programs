@@ -42,7 +42,7 @@ for _,i in ipairs(fileList) do
 
 
 	if not (previousVersionsTable[i] == version) then
-		print(i, " Version: ", version, " (previously ", previousVersionsTable[i])
+		print(i, ": ", version, " (prev. ", previousVersionsTable[i])
 	else
 		print(i, " Version: ", version)
 	end
