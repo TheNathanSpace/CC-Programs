@@ -1,4 +1,4 @@
--- 0.1.6
+-- 0.1.7
 
 local Util = require("Util")
 
@@ -32,8 +32,6 @@ if Util.isEmpty(previousVersionsString) then
 	
 	print("Was empty. Using ", previousVersionsTable)
 end
-
-print(Util.printTable(previousVersionsTable))
 
 for _,i in ipairs(fileList) do
 
