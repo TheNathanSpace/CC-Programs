@@ -20,18 +20,18 @@ shell.run("wget", "https://thekingelessar.github.io/CC-Programs/HTMLUpdate.lua",
 
 shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Live.lua", "live")
 
+term.clear()
+
 local file = fs.open("live", "r")
 local line = file.readLine()
 local version = string.gsub(line, "-", "")
-version = trim1(version)
+local versionLive = trim1(version)
 
-term.clear()
-
-print(version)
+print(versionLive)
 
 file = fs.open("HTMLUpdate", "r")
 line = file.readLine()
 version = string.gsub(line, "-", "")
-version = trim1(version)
+local versionHTMLUpdate = trim1(version)
 
-print(version)
+print(versionHTMLUpdate)
