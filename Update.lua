@@ -1,4 +1,4 @@
--- 0.1.1
+-- 0.1.2
 
 local Util = require("Util")
 
@@ -20,8 +20,17 @@ local fileList = {"live", "World", "Movement", "Items", "Update", "Util"}
 
 term.clear()
 
-local versionHistory = fs.open("VersionHistory.txt", "r")
-local previousVersionsString = versionHistory.readLine()
+if fs.exists("VersionHistory.txt") then
+	local versionHistory = fs.open("VersionHistory.txt", "r")
+	local previousVersionsString = versionHistory.readLine()
+else
+	local versionHistory = fs.open("VersionHistory.txt", "w")
+	versionHistory.close()
+	
+	local versionHistory = fs.open("VersionHistory.txt", "r")
+	local previousVersionsString = versionHistory.readLine()
+end
+
 local previousVersionsTable = load(previousVersionsString)()
 
 versionHistory.close()
