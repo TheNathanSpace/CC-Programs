@@ -1,4 +1,4 @@
--- 0.1.5
+-- 0.1.6
 
 local Util = require("Util")
 
@@ -20,19 +20,25 @@ local fileList = {"live", "World", "Movement", "Items", "Update", "Util"}
 
 term.clear()
 
+local previousVersionsString = nil
+
 if fs.exists("VersionHistory.txt") then
-	local versionHistory = fs.open("VersionHistory.txt", "r")
-	local previousVersionsString = versionHistory.readLine()
-else
-	local versionHistory = fs.open("VersionHistory.txt", "w")
-	local previousVersionsString = "{World = \"0\", Movement = \"0\", Items = \"0\", Update = \"0\", Util = \"0\", live = \"0\"}"
-	versionHistory.write(previousVersionsString)
-	versionHistory.close()
-	
 	local versionHistory = fs.open("VersionHistory.txt", "r")
 	local previousVersionsString = versionHistory.readLine()
 end
 
+if Util.isEmpty(previousVersionsString) then
+	local versionHistory = fs.open("VersionHistory.txt", "w")
+	local previousVersionsTable = {World = "0", Movement = "0", Items = "0", Update = "0", Util = "0", live = "0"}
+	versionHistory.write(table.tostring(previousVersionsTable)
+	versionHistory.close()
+	
+	local versionHistory = fs.open("VersionHistory.txt", "r")
+	local previousVersionsString = versionHistory.readLine()
+	print("Was empty. Using ", previousVersionsString)
+end
+
+print(previousVersionsString)
 local previousVersionsTable = load(previousVersionsString)()
 
 versionHistory.close()

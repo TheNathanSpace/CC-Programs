@@ -1,6 +1,6 @@
 -- 0.1.0
 
-function has_value (tab, val)
+function hasValue (tab, val)
     for index, value in ipairs(tab) do
         if value == val then
             return true
@@ -14,4 +14,8 @@ function trimSpaces(s)
    return (s:gsub("^%s*(.-)%s*$", "%1"))
 end
 
-return {has_value = has_value, trimSpaces = trimSpaces}
+function isEmpty(s)
+  return s == nil or s == ''
+end
+
+return {has_value = has_value, trimSpaces = trimSpaces, isEmpty = isEmpty}
