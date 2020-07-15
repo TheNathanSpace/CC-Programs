@@ -1,13 +1,16 @@
-shell.run("delete", "live")
-shell.run("delete", "htmlparser.lua")
-shell.run("delete", "htmlparser/ElementNode.lua")
-shell.run("delete", "htmlparser/voidelements.lua")
+if (not fs.exists("htmlparser.lua")) or (not fs.exists("htmlparser/ElementNode.lua")) or (not fs.exists("htmlparser/voidelements.lua")) then
+	shell.run("delete", "htmlparser.lua")
+	shell.run("delete", "htmlparser/ElementNode.lua")
+	shell.run("delete", "htmlparser/voidelements.lua")
 
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/lua-htmlparser/htmlparser.lua", "htmlparser.lua")
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/lua-htmlparser/htmlparser/ElementNode.lua", "htmlparser/ElementNode.lua")
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/lua-htmlparser/htmlparser/voidelements.lua", "htmlparser/voidelements.lua")
+	shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/lua-htmlparser/htmlparser.lua", "htmlparser.lua")
+	shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/lua-htmlparser/htmlparser/ElementNode.lua", "htmlparser/ElementNode.lua")
+	shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/lua-htmlparser/htmlparser/voidelements.lua", "htmlparser/voidelements.lua")
+end
 
 local htmlparser = require("htmlparser")
+
+shell.run("delete", "live")
 
 shell.run("wget", "https://github.com/TheKingElessar/CC-Programs/blob/master/Live.lua", "live")
 
@@ -26,8 +29,8 @@ local line_array = {}
 
 for _,e in ipairs(table_element.nodes) do
 	for q = 1, #e.classes do
+		print(e.classes[q])
 		if e.classes[q] == "js-file-line" then
-			print(e[q]:getcontent())
 			table.insert(line_array, e[q]:getcontent())
 		end
 	end
