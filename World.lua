@@ -1,4 +1,4 @@
--- 0.1.3
+-- 0.1.4
 
 blacklistedTop = false
 blacklistedFront = false
@@ -10,7 +10,7 @@ function CheckBlacklist()
 	if(inspectSuccess) then
 		for i = 1, 3 do
 			if(string.find(inspectData.name, blacklistedBlocks[i])) then
-				print(blacklistedBlocks[i], "found")
+				print(blacklistedBlocks[i], "found") -- Even when the chest is found, it still returns false
 				blacklistedFront = true
 			end
 		end
@@ -29,8 +29,6 @@ function CheckBlacklist()
 end
 
 function Reset()
-	blacklistedFront = false
-	blacklistedTop = false
 end
 
 return {CheckBlacklist = CheckBlacklist, blacklistedTop = blacklistedTop, blacklistedFront = blacklistedFront, Reset = Reset}

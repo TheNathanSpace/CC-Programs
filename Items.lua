@@ -1,4 +1,4 @@
--- 0.1.1
+-- 0.1.2
 
 health = 50
 local World = require("World")
@@ -47,9 +47,13 @@ function CheckForItems()
 		local change = newBricks - oldBricks -- Difference
 		health = health - change
 	end
+	
+	Reset()
 end
 
 function Reset()
+	World.blacklistedFront = false
+	World.blacklistedTop = false
 end
 
 return {GetInventory = GetInventory, CheckForItems = CheckForItems, health = health, Reset = Reset}
