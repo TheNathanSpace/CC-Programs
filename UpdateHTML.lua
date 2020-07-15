@@ -27,7 +27,8 @@ local line_array = {}
 for _,e in ipairs(table_element.nodes) do
 	for q = 1, #e.classes do
 		if e.classes[q] == "js-file-line" then
-			table.insert(line_array, e:getcontent())
+			print(e[q]:getcontent())
+			table.insert(line_array, e[q]:getcontent())
 		end
 	end
 end
