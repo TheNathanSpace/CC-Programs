@@ -13,3 +13,5 @@ end
 function trimSpaces(s)
    return (s:gsub("^%s*(.-)%s*$", "%1"))
 end
+
+return {has_value = has_value, trimSpaces = trimSpaces}
