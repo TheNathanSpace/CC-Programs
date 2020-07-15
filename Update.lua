@@ -1,4 +1,4 @@
--- 0.1.7
+-- 0.1.8
 
 local Util = require("Util")
 
@@ -29,8 +29,6 @@ end
 if Util.isEmpty(previousVersionsString) then
 	local previousVersionsTable = {World = "0", Movement = "0", Items = "0", Update = "0", Util = "0", live = "0"}
 	Util.saveTable(previousVersionsTable, "VersionHistory.txt")
-	
-	print("Was empty. Using ", previousVersionsTable)
 end
 
 for _,i in ipairs(fileList) do
@@ -44,7 +42,7 @@ for _,i in ipairs(fileList) do
 	if not (previousVersionsTable[i] == version) then
 		print(i, ": ", version, " (prev. ", previousVersionsTable[i])
 	else
-		print(i, " Version: ", version)
+		print(i, " version: ", version)
 	end
 	
 	previousVersionsTable[i] = version
