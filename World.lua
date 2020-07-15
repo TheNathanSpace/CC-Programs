@@ -1,4 +1,4 @@
--- 0.1.0
+-- 0.1.1
 
 blacklistedTop = false
 blacklistedFront = false
@@ -9,6 +9,7 @@ function CheckBlacklist()
 	local inspectSuccess, inspectData = turtle.inspect()
 	if(inspectSuccess) then
 		for i = 1, 3 do
+			print(inspectData.name)
 			if(string.find(inspectData.name, blacklistedBlocks[i])) then
 				blacklistedFront = true
 			end
