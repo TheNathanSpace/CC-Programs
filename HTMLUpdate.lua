@@ -1,3 +1,13 @@
+local function has_value (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
+end
+
 if (not fs.exists("htmlparser.lua")) or (not fs.exists("htmlparser/ElementNode.lua")) or (not fs.exists("htmlparser/voidelements.lua")) then
 	shell.run("delete", "htmlparser.lua")
 	shell.run("delete", "htmlparser/ElementNode.lua")
@@ -27,13 +37,16 @@ local table_element = root:select(".js-file-line-container")[1]
 local line_array = {}
 
 for _,e in ipairs(table_element.nodes) do
-	print(#table_element.nodes)
-	for q = 1, #e.classes do
-		print(e.classes[q])
-		if e.classes[q] == "js-file-line" then
-			table.insert(line_array, e[q]:getcontent())
+	print(e:getcontent()) -- Prints td
+	
+	local td_level = e.nodes
+	
+	for _,q in ipairs(td_level) do
+		if has_value(q.classes, "js-file-line") then
+			table.insert(line_array, q)
 		end
 	end
+	
 end
 
 shell.run("delete", "live")
@@ -42,5 +55,5 @@ local live_file = fs.open("live", "a")
 
 for i = 1, #line_array do
 	print(line_array[i])
-	live_file.append(line_arry[i])
+	live_file.append(line_array[i])
 end
