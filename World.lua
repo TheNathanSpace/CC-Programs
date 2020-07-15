@@ -23,6 +23,8 @@ function CheckBlacklist()
 			end
 		end
 	end
+	-- print(blacklistedFront)
+	-- print(blacklistedTop)
 end
 
 function Reset()
