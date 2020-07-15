@@ -57,7 +57,7 @@ local live_file = fs.open("live", "a")
 
 for i = 1, #line_array do
 --	print(line_array[i])
-	live_file.append(line_array[i])
+	live_file.writeLine(line_array[i])
 end
 
 live_file.close()
