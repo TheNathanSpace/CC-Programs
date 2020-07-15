@@ -16,7 +16,7 @@ shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Movement.lua", "
 shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Items.lua", "ItemsAPI")
 shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Update.lua", "Update")
 
-shell.run("wget", "https://thekingelessar.github.io/CC-Programs/UpdateHTML.lua", "UpdateHTML")
+shell.run("wget", "https://thekingelessar.github.io/CC-Programs/HTMLUpdate.lua", "HTMLUpdate")
 
 shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Live.lua", "live")
 

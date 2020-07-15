@@ -26,8 +26,8 @@ local table_element = root:select(".js-file-line-container")[1]
 
 local line_array = {}
 
-
 for _,e in ipairs(table_element.nodes) do
+	print(#table_element.nodes)
 	for q = 1, #e.classes do
 		print(e.classes[q])
 		if e.classes[q] == "js-file-line" then
