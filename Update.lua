@@ -1,4 +1,4 @@
--- Update: Version 0.1.0
+-- 0.1.1
 
 local Util = require("Util")
 
@@ -20,6 +20,12 @@ local fileList = {"live", "World", "Movement", "Items", "Update", "Util"}
 
 term.clear()
 
+local versionHistory = fs.open("VersionHistory.txt", "r")
+local previousVersionsString = versionHistory.readLine()
+local previousVersionsTable = load(previousVersionsString)()
+
+versionHistory.close()
+
 for _,i in ipairs(fileList) do
 
 	local file = fs.open(i, "r")
@@ -27,6 +33,17 @@ for _,i in ipairs(fileList) do
 	local version = string.gsub(line, "-", "")
 	local version = Util.trimSpaces(version)
 
-	print(version)
+
+	if not (previousVersionsTable[i] == version) then
+		print(i, " Version: ", version, " (previously ", previousVersionsTable[i])
+	else
+		print(i, " Version: ", version)
+	end
 	
+	previousVersionsTable[i] = version
 end
+
+local versionHistory = fs.open("VersionHistory.txt", "w")
+
+versionHistory.write(table.tostring(previousVersionsTable))
+versionHistory.close()

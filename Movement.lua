@@ -1,4 +1,4 @@
--- Movement: Version 0.1.0
+-- 0.1.0
 
 x = 1672
 y = 42

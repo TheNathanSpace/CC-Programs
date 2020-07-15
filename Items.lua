@@ -1,4 +1,4 @@
--- Items: Version 0.1.0
+-- 0.1.0
 
 health = 50
 local World = require("World")
