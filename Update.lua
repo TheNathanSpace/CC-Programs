@@ -9,7 +9,7 @@ shell.run("delete", "WorldAPI")
 shell.run("delete", "MovementAPI")
 shell.run("delete", "ItemsAPI")
 shell.run("delete", "Update")
-shell.run("delete", "UpdateHTML")
+shell.run("delete", "HTMLUpdate")
 
 shell.run("wget", "https://thekingelessar.github.io/CC-Programs/World.lua", "WorldAPI")
 shell.run("wget", "https://thekingelessar.github.io/CC-Programs/Movement.lua", "MovementAPI")
