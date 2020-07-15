@@ -21,17 +21,22 @@ local root = htmlparser.parse(full_html)
 
 local table_element = root:select(".js-file-line-container")[1]
 
-local line_arry = {}
+local line_array = {}
 
 
 for _,e in ipairs(table_element.nodes) do
-	table.insert(line_arry, e:getcontent())
+	for q = 1, #e.classes do
+		if e.classes[q] == "js-file-line" then
+			table.insert(line_array, e:getcontent())
+		end
+	end
 end
 
 shell.run("delete", "live")
 
 local live_file = fs.open("live", "a")
 
-for i = 0, #line_arry do
+for i = 1, #line_array do
+	print(line_array[i])
 	live_file.append(line_arry[i])
 end
