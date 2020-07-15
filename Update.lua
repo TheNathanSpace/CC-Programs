@@ -1,4 +1,4 @@
--- 0.1.2
+-- 0.1.3
 
 local Util = require("Util")
 
@@ -25,6 +25,8 @@ if fs.exists("VersionHistory.txt") then
 	local previousVersionsString = versionHistory.readLine()
 else
 	local versionHistory = fs.open("VersionHistory.txt", "w")
+	local previousVersionsString = "{World = "0", Movement = "0", Items = "0", Update = "0", Util = "0", live = "0"}
+	versionHistory.write(previousVersionsString)
 	versionHistory.close()
 	
 	local versionHistory = fs.open("VersionHistory.txt", "r")
