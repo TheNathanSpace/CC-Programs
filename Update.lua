@@ -25,7 +25,7 @@ for _,i in ipairs(fileList) do
 	local file = fs.open(i, "r")
 	local line = file.readLine()
 	local version = string.gsub(line, "-", "")
-	local version = trimSpaces(version)
+	local version = Util.trimSpaces(version)
 
 	print(version)
 	
