@@ -1,10 +1,7 @@
--- 0.1.1
+-- 0.2.0
 
-x = 1672
-y = 42
-z = -4115
+local World = require("World")
 
-facing = 0 -- 1 = North, 2 = East, 3 = South, 4 = West
 turnTo = 0
 
 moveChance = 0
@@ -13,7 +10,9 @@ turning = false
 
 function ChangeDirection(isRandom)
 	if(isRandom) then
-		turnTo = math.random(1, 4)
+		while(turnTo == World.getFacing()) do
+			turnTo = math.random(1, 4)
+		end
 	end
 	
 	turning = true
@@ -21,12 +20,12 @@ end
 
 function DetermineMovement() -- Only running like every 5 ticks or something
 	if(turning) then
-		if(not (facing == turnTo)) then
+		if(not (World.getFacing() == turnTo)) then
 			turtle.turnRight()
-			facing = facing + 1
+			World.setFacing(World.getFacing() + 1)
 			
-			if(facing == 5) then
-				facing = 1
+			if(World.getFacing() == 5) then
+				World.setFacing(1)
 			end
 		else
 			turning = false

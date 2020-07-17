@@ -1,9 +1,14 @@
--- 0.1.26
+-- 0.2.0
+
 local World = require("World")
 local Movement = require("Movement")
 local Items = require("Items")
+local Comms = require("Comms")
 
 shell.run("label", "set", "Lenny")
+rednet.open()
+Comms.openComms()
+
 term.clear()
 shell.run("clear")
 
