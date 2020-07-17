@@ -1,4 +1,4 @@
--- 0.1.21
+-- 0.1.22
 
 shell.run("label", "set", "Lenny")
 term.clear()
@@ -10,8 +10,6 @@ local Items = require("Items")
 
 local myWindow = window.create(term.current(),15,5,20,10)
 
-myWindow.setBackgroundColor(colors.white)
-
 function DrawDisplay()
 	myWindow.write("Text")
 	if(not (Items.getHealth() <= 0)) then
@@ -22,6 +20,7 @@ end
 function Reset()
 	World.Reset()
 	Items.Reset()
+	myWindow.clear()
 end
 
 function Tick()
