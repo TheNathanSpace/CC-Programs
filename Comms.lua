@@ -1,4 +1,4 @@
--- 0.2.1
+-- 0.2.2
 
 local World = require("World")
 
@@ -7,8 +7,9 @@ local protocalString = "lenny_location"
 
 function openComms()
 	while true do
+		print("Listening for messsage")
 		local senderId, message, protocol = listenForMessage()
-		
+		print("Message recieved")
 		broadcastLocation(senderId)
 	end
 end
@@ -21,6 +22,7 @@ end
 function broadcastLocation(targetID)
 	local x, y, z = World.getLocation()
 	rednet.send(targetID, messageString, "lenny_location_response")
+	print("Response sent")
 end
 
 return {openComms = openComms}
