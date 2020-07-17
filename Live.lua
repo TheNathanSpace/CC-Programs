@@ -1,4 +1,4 @@
--- 0.1.23
+-- 0.1.24
 
 shell.run("label", "set", "Lenny")
 term.clear()
@@ -17,10 +17,11 @@ end
 function Reset()
 	World.Reset()
 	Items.Reset()
-	term.clear()
 end
 
 function Tick()
+	term.clear()
+
 	Items.CheckForItems()
 	Movement.DetermineMovement()
 	DrawDisplay()
