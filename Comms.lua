@@ -1,15 +1,12 @@
--- 0.2.2
+-- 0.2.3
 
 local World = require("World")
 
-local messageString = "I'm located at ", x, " ", y, " ", z
 local protocalString = "lenny_location"
 
 function openComms()
 	while true do
-		print("Listening for messsage")
 		local senderId, message, protocol = listenForMessage()
-		print("Message recieved")
 		broadcastLocation(senderId)
 	end
 end
@@ -19,10 +16,14 @@ function listenForMessage()
 	return senderId, message, protocol
 end
 
+function formResponse(x, y, z)
+	local messageString = "I'm located at ", x, " ", y, " ", z
+	return messageString
+end
+
 function broadcastLocation(targetID)
 	local x, y, z = World.getLocation()
-	rednet.send(targetID, messageString, "lenny_location_response")
-	print("Response sent")
+	rednet.send(targetID, formResponse(x, y, z), "lenny_location_response")
 end
 
 return {openComms = openComms}
