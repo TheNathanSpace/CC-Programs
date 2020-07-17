@@ -1,12 +1,11 @@
 -- 0.1.19
 
 shell.run("label", "set", "Lenny")
+term.clear()
 
 local World = require("World")
 local Movement = require("Movement")
 local Items = require("Items")
-
-term.clear()
 
 function DrawDisplay()
 	if(not (Items.getHealth() <= 0)) then
@@ -17,10 +16,10 @@ end
 function Reset()
 	World.Reset()
 	Items.Reset()
-	term.clear()
 end
 
 function Tick()
+	term.clear()
 	Items.CheckForItems()
 	Movement.DetermineMovement()
 	DrawDisplay()
