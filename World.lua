@@ -1,4 +1,4 @@
--- 0.2.0
+-- 0.2.1
 
 x = nil
 y = nil
@@ -19,8 +19,8 @@ function CheckBlacklist()
 	if(inspectSuccess) then
 		for i = 1, 3 do
 			if(string.find(inspectData.name, blacklistedBlocks[i])) then
-				local singleBlock = 
-				table.insert(storageBlocks, --Thing)
+		--		local singleBlock = 
+		--		table.insert(storageBlocks, --Thing)
 				blacklistedFront = true
 			end
 		end
