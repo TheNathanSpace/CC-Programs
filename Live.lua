@@ -17,7 +17,7 @@ end
 function Reset()
 	World.Reset()
 	Items.Reset()
---	term.clear()
+	term.clear()
 end
 
 function Tick()
