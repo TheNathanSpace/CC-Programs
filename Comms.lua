@@ -1,4 +1,4 @@
--- 0.2.3
+-- 0.2.4
 
 local World = require("World")
 
@@ -17,7 +17,8 @@ function listenForMessage()
 end
 
 function formResponse(x, y, z)
-	local messageString = "I'm located at ", x, " ", y, " ", z
+	local messageString = "I'm located at " .. x .. " " .. y .. " " .. z
+	print(messageString)
 	return messageString
 end
 
