@@ -2,6 +2,7 @@
 
 shell.run("label", "set", "Lenny")
 term.clear()
+shell.run("clear")
 
 local World = require("World")
 local Movement = require("Movement")
