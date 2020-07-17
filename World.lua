@@ -1,4 +1,4 @@
--- 0.2.1
+-- 0.2.2
 
 x = nil
 y = nil
@@ -62,4 +62,4 @@ function Reset()
 	blacklistedTop = false
 end
 
-return {CheckBlacklist = CheckBlacklist, getFrontBlacklist = getFrontBlacklist, getTopBlacklist = getTopBlacklist, getFacing = getFacing, setFacing = setFacing, Reset = Reset}
+return {CheckBlacklist = CheckBlacklist, getFrontBlacklist = getFrontBlacklist, getTopBlacklist = getTopBlacklist, getLocation = getLocation, getFacing = getFacing, setFacing = setFacing, Reset = Reset}
