@@ -1,4 +1,4 @@
--- 0.1.6
+-- 0.1.7
 
 blacklistedTop = false
 blacklistedFront = false
@@ -27,9 +27,17 @@ function CheckBlacklist()
 	print(blacklistedFront)
 end
 
+function getFrontBlacklist()
+	return blacklistedFront
+end
+
+function getTopBlacklist()
+	return blacklistedTop
+end
+
 function Reset()
 	blacklistedFront = false
 	blacklistedTop = false
 end
 
-return {CheckBlacklist = CheckBlacklist, blacklistedTop = blacklistedTop, blacklistedFront = blacklistedFront, Reset = Reset}
+return {CheckBlacklist = CheckBlacklist, getFrontBlacklist = getFrontBlacklist, getTopBlacklist = getTopBlacklist, Reset = Reset}

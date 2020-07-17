@@ -1,4 +1,4 @@
--- 0.1.2
+-- 0.1.3
 
 health = 50
 local World = require("World")
@@ -32,11 +32,11 @@ function CheckForItems()
 	
 	World.CheckBlacklist()
 
-	if(not World.blacklistedFront) then -- Picks up items
+	if(not World.getFrontBlacklist()) then -- Picks up items
 		local suckForward = turtle.suck()
 	end
 	
-	if(not World.blacklistedTop) then
+	if(not World.getTopBlacklist()) then
 		local suckUp = turtle.suckUp()
 	end
 
