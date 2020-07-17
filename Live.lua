@@ -6,7 +6,6 @@ local Items = require("Items")
 local Comms = require("Comms")
 
 shell.run("label", "set", "Lenny")
-rednet.open()
 Comms.openComms()
 
 term.clear()
