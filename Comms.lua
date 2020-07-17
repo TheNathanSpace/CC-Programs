@@ -20,7 +20,7 @@ end
 
 function broadcastLocation(targetID)
 	local x, y, z = World.getLocation()
-	rednet.send(targetID, messageString, protocalString)
+	rednet.send(targetID, messageString, "lenny_location_response")
 end
 
 return {openComms = openComms}
