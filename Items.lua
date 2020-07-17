@@ -1,6 +1,7 @@
--- 0.1.4
+-- 0.1.5
 
 health = 50
+changed = false
 local World = require("World")
 
 function Scream()
@@ -45,6 +46,7 @@ function CheckForItems()
 	if(newBricks > oldBricks) then
 		Scream()
 		local change = newBricks - oldBricks
+		changed = true
 		health = health - change
 	end
 end
@@ -53,7 +55,12 @@ function getHealth()
 	return health
 end
 
-function Reset()
+function getChanged()
+	return changed
 end
 
-return {GetInventory = GetInventory, CheckForItems = CheckForItems, getHealth = getHealth, Reset = Reset}
+function Reset()
+	changed = false
+end
+
+return {GetInventory = GetInventory, CheckForItems = CheckForItems, getHealth = getHealth, getChanged = getChanged, Reset = Reset}
