@@ -1,4 +1,4 @@
--- 0.2.0
+-- 0.2.1
 
 local World = require("World")
 
@@ -7,17 +7,15 @@ local protocalString = "lenny_location"
 
 function openComms()
 	while true do
-		local c = coroutine.create(listenForMessage)
+		local senderId, message, protocol = listenForMessage()
 		
-		local ok, recievedMessage = coroutine.resume(c)
-		
-		broadcastLocation(recievedMessage[1])
+		broadcastLocation(senderId)
 	end
 end
 
 function listenForMessage()
 	local senderId, message, protocol = rednet.receive(protocalString)
-	coroutine.yield({senderId, message, protocal})
+	return senderId, message, protocol
 end
 
 function broadcastLocation(targetID)
