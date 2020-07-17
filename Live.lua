@@ -1,4 +1,4 @@
--- 0.1.17
+-- 0.1.18
 
 shell.run("label", "set", "Lenny")
 
@@ -9,10 +9,9 @@ local Items = require("Items")
 term.clear()
 
 function DrawDisplay()
---	print("Mood: ", "Bad go away dexter")
---	if(not (Items.health <= 0)) then
---		print("Health: ", Items.health)
---	end
+	if(not (Items.health <= 0)) then
+		print("Health: ", Items.getHealth())
+	end
 end
 
 function Reset()
@@ -24,7 +23,6 @@ end
 function Tick()
 	Items.CheckForItems()
 	Movement.DetermineMovement()
-	print(World.getFrontBlacklist())
 	DrawDisplay()
 	Reset()
 end
@@ -32,7 +30,7 @@ end
 while true do
 	Tick()
 	
-	if(Items.health <= 0) then
+	if(Items.getHealth() <= 0) then
 		print("He has killed me, mother")
 		break
 	end

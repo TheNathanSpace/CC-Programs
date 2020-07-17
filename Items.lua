@@ -1,4 +1,4 @@
--- 0.1.3
+-- 0.1.4
 
 health = 50
 local World = require("World")
@@ -28,11 +28,11 @@ function GetInventory(itemString)
 end
 
 function CheckForItems()
-	local oldBricks = GetInventory("brick") -- Count bricks
+	local oldBricks = GetInventory("brick")
 	
 	World.CheckBlacklist()
 
-	if(not World.getFrontBlacklist()) then -- Picks up items
+	if(not World.getFrontBlacklist()) then
 		local suckForward = turtle.suck()
 	end
 	
@@ -40,16 +40,20 @@ function CheckForItems()
 		local suckUp = turtle.suckUp()
 	end
 
-	local newBricks = GetInventory("brick") -- Counts bricks
+	local newBricks = GetInventory("brick")
 	
-	if(newBricks > oldBricks) then -- If picked up bricks
+	if(newBricks > oldBricks) then
 		Scream()
-		local change = newBricks - oldBricks -- Difference
+		local change = newBricks - oldBricks
 		health = health - change
 	end
+end
+
+function getHealth()
+	return health
 end
 
 function Reset()
 end
 
-return {GetInventory = GetInventory, CheckForItems = CheckForItems, health = health, Reset = Reset}
+return {GetInventory = GetInventory, CheckForItems = CheckForItems, getHealth = getHealth, Reset = Reset}
