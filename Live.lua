@@ -1,12 +1,18 @@
--- 0.1.25
+-- 0.1.26
+local World = require("World")
+local Movement = require("Movement")
+local Items = require("Items")
 
 shell.run("label", "set", "Lenny")
 term.clear()
 shell.run("clear")
 
-local World = require("World")
-local Movement = require("Movement")
-local Items = require("Items")
+for i = 0, 13 do
+	print(" ")
+	term.clear()
+end
+
+print("Health: ", Items.getHealth())
 
 function DrawDisplay()
 	if (not (Items.getHealth() <= 0)) and (Items.getChanged() == true) then
