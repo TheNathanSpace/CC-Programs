@@ -1,4 +1,4 @@
--- 0.1.19
+-- 0.1.20
 
 shell.run("label", "set", "Lenny")
 term.clear()
@@ -9,6 +9,7 @@ local Movement = require("Movement")
 local Items = require("Items")
 
 function DrawDisplay()
+	print("What")
 	if(not (Items.getHealth() <= 0)) then
 		print("Health: ", Items.getHealth())
 	end
