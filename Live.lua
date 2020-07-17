@@ -1,4 +1,4 @@
--- 0.1.22
+-- 0.1.23
 
 shell.run("label", "set", "Lenny")
 term.clear()
@@ -8,10 +8,7 @@ local World = require("World")
 local Movement = require("Movement")
 local Items = require("Items")
 
-local myWindow = window.create(term.current(),15,5,20,10)
-
 function DrawDisplay()
-	myWindow.write("Text")
 	if(not (Items.getHealth() <= 0)) then
 		print("Health: ", Items.getHealth())
 	end
@@ -20,7 +17,7 @@ end
 function Reset()
 	World.Reset()
 	Items.Reset()
-	myWindow.clear()
+	term.clear()
 end
 
 function Tick()
