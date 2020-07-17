@@ -1,4 +1,4 @@
--- 0.2.0
+-- 0.2.1
 
 local Util = require("Util")
 
@@ -13,6 +13,7 @@ shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Items.lua", "Items")
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Update.lua", "Update")
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Util.lua", "Util")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Comms.lua", "Comms")
 
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Live.lua", "live")
 
