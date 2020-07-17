@@ -1,4 +1,4 @@
--- 0.1.15
+-- 0.1.16
 
 shell.run("label", "set", "Lenny")
 
@@ -25,7 +25,6 @@ function Tick()
 	Items.CheckForItems()
 	Movement.DetermineMovement()
 	print(World.blacklistedTop)
-	print(World.blacklistedFront)
 	DrawDisplay()
 	Reset()
 end
