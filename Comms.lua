@@ -18,15 +18,11 @@ end
 
 function formResponse(x, y, z)
 	local messageString = "I'm located at " .. x .. " " .. y .. " " .. z
-	print(messageString)
 	return messageString
 end
 
 function broadcastLocation(targetID)
 	local x, y, z = World.getLocation()
-	print(x)
-	print(y)
-	print(z)
 	rednet.send(targetID, formResponse(x, y, z), "lenny_location_response")
 end
 

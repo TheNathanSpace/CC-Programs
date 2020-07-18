@@ -1,4 +1,4 @@
--- 0.2.2
+-- 0.2.3
 
 local World = require("World")
 local Movement = require("Movement")
@@ -7,7 +7,6 @@ local Comms = require("Comms")
 
 shell.run("label", "set", "Lenny")
 rednet.open("left")
-Comms.openComms()
 
 term.clear()
 shell.run("clear")
@@ -38,11 +37,15 @@ function Tick()
 	Reset()
 end
 
-while true do
-	Tick()
-	
-	if(Items.getHealth() <= 0) then
-		print("No one's ever really gone.")
-		break
+function main_live()
+	while true do
+		Tick()
+		
+		if(Items.getHealth() <= 0) then
+			print("No one's ever really gone.")
+			break
+		end
 	end
 end
+
+parallel.waitForAll(main_live, Comms.openComms)  
