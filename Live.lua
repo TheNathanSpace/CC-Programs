@@ -1,4 +1,4 @@
--- 0.2.1
+-- 0.2.2
 
 local World = require("World")
 local Movement = require("Movement")
@@ -42,7 +42,7 @@ while true do
 	Tick()
 	
 	if(Items.getHealth() <= 0) then
-		print("He has killed me, mother")
+		print("No one's ever really gone.")
 		break
 	end
 end
