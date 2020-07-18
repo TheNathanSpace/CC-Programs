@@ -1,19 +1,30 @@
--- 0.2.2
+-- 0.2.3
 
 local Util = require("Util")
 
 shell.run("delete", "live")
+os.sleep(.4)
 shell.run("delete", "World")
+os.sleep(.4)
 shell.run("delete", "Movement")
+os.sleep(.4)
 shell.run("delete", "Items")
+os.sleep(.4)
 shell.run("delete", "Update")
+os.sleep(.4)
 
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/World.lua", "World")
+os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Movement.lua", "Movement")
+os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Items.lua", "Items")
+os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Update.lua", "Update")
+os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Util.lua", "Util")
+os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Comms.lua", "Comms")
+os.sleep(.4)
 
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Live.lua", "live")
 

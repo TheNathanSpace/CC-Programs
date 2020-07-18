@@ -1,4 +1,4 @@
--- 0.2.4
+-- 0.2.5
 
 local World = require("World")
 
@@ -24,6 +24,9 @@ end
 
 function broadcastLocation(targetID)
 	local x, y, z = World.getLocation()
+	print(x)
+	print(y)
+	print(z)
 	rednet.send(targetID, formResponse(x, y, z), "lenny_location_response")
 end
 
