@@ -2,8 +2,6 @@
 
 local Util = require("Util")
 
-shell.run("delete", "live")
-os.sleep(.4)
 shell.run("delete", "World")
 os.sleep(.4)
 shell.run("delete", "Movement")
@@ -11,6 +9,12 @@ os.sleep(.4)
 shell.run("delete", "Items")
 os.sleep(.4)
 shell.run("delete", "Update")
+os.sleep(.4)
+shell.run("delete", "Util")
+os.sleep(.4)
+shell.run("delete", "Comms")
+os.sleep(.4)
+shell.run("delete", "live")
 os.sleep(.4)
 
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/World.lua", "World")
@@ -49,7 +53,6 @@ for _,i in ipairs(fileList) do
 	local line = file.readLine()
 	local version = string.gsub(line, "-", "")
 	local version = Util.trimSpaces(version)
-
 
 	if not (previousVersionsTable[i] == version) then
 		print(i, ": ", version, " (prev. ", previousVersionsTable[i], ")")
