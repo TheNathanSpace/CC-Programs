@@ -1,4 +1,4 @@
--- 0.2.0
+-- 0.2.1
 
 local World = require("World")
 
@@ -10,6 +10,7 @@ turning = false
 
 function ChangeDirection(isRandom)
 	if(isRandom) then
+		turnTo = math.random(1, 4)
 		while(turnTo == World.getFacing()) do
 			turnTo = math.random(1, 4)
 		end
