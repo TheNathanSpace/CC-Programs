@@ -5,7 +5,7 @@ y = nil
 z = nil
 
 facingNum = 1 -- 1 = North, 2 = East, 3 = South, 4 = West
-facingDirection = "unknown" -- Calculate by checking change in location
+facingDirection = "unknown"
 
 previousLocation = {prevX = nil, prevY = nil, prevZ = nil}
 
@@ -56,10 +56,22 @@ function getLocation()
 end
 
 function getDirection()
-	if previousLocation.prevX < x then facingDirection = "east" end
-	if previousLocation.prevX > x then facingDirection = "west" end
-	if previousLocation.prevZ < z then facingDirection = "south" end
-	if previousLocation.prevZ > z then facingDirection = "north" end
+	if previousLocation.prevX < x then 
+		facingDirection = "east"
+		facingNum = 2
+	end
+	if previousLocation.prevX > x then 
+		facingDirection = "west"
+		facingNum = 4
+	end
+	if previousLocation.prevZ < z then 
+		facingDirection = "south"
+		facingNum = 3
+	end
+	if previousLocation.prevZ > z then 
+		facingDirection = "north"
+		facingNum = 1
+	end
 end
 
 function returnLocation()
@@ -75,11 +87,11 @@ function returnStatus()
 end
 
 function getFacing()
-	return facing
+	return facingNum
 end
 
 function setFacing(newFacing)
-	facing = newFacing
+	facingNum = newFacing
 end
 
 function Reset()
