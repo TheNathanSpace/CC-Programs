@@ -1,4 +1,4 @@
--- 0.2.5
+-- 0.3.0
 
 local World = require("World")
 
@@ -22,7 +22,7 @@ function formResponse(x, y, z)
 end
 
 function broadcastLocation(targetID)
-	local x, y, z = World.getLocation()
+	local x, y, z = World.returnLocation() -- If this is added as variables to the World file, don't re-get it here
 	rednet.send(targetID, formResponse(x, y, z), "lenny_location_response")
 end
 

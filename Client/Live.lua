@@ -1,4 +1,4 @@
--- 0.2.3
+-- 0.3.0
 
 local World = require("World")
 local Movement = require("Movement")
@@ -23,6 +23,8 @@ function DrawDisplay()
 		term.clear()
 		print("Health: ", Items.getHealth())
 	end
+	
+	print(World.returnStatus())
 end
 
 function Reset()
@@ -32,6 +34,7 @@ end
 
 function Tick()
 	Items.CheckForItems()
+	World.getLocation()
 	Movement.DetermineMovement()
 	DrawDisplay()
 	Reset()

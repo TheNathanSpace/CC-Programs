@@ -1,10 +1,13 @@
--- 0.2.2
+-- 0.3.0
 
 x = nil
 y = nil
 z = nil
 
-facing = 1 -- 1 = North, 2 = East, 3 = South, 4 = West
+facingNum = 1 -- 1 = North, 2 = East, 3 = South, 4 = West
+facingDirection = nil -- Calculate by checking change in location
+
+previousLocation = {prevX = nil, prevY = nil, prevZ = nil}
 
 blacklistedTop = false
 blacklistedFront = false
@@ -45,8 +48,33 @@ function getTopBlacklist()
 end
 
 function getLocation()
+	local hasPrevious = true
+	if previousLocation.prevX == nil then
+		hasPrevious = false
+	end
+	
 	x, y, z = gps.locate()
+	
+	getDirection()
+end
+
+function getDirection()
+	if previousLocation.prevX < x then facingDirection = "east" end
+	if previousLocation.prevX > x then facingDirection = "west" end
+	if previousLocation.prevZ < z then facingDirection = "south" end
+	if previousLocation.prevZ > z then facingDirection = "north" end
+end
+
+function returnLocation()
 	return x, y, z
+end
+
+function returnDirection()
+	return facingDirection
+end
+
+function returnStatus()
+	return x .. " " .. y .. " " .. z .. " (facing " .. facingDirection .. ")"
 end
 
 function getFacing()
@@ -60,6 +88,10 @@ end
 function Reset()
 	blacklistedFront = false
 	blacklistedTop = false
+	
+	previousLocation.prevX = x
+	previousLocation.prevY = y
+	previousLocation.prevZ = z
 end
 
-return {CheckBlacklist = CheckBlacklist, getFrontBlacklist = getFrontBlacklist, getTopBlacklist = getTopBlacklist, getLocation = getLocation, getFacing = getFacing, setFacing = setFacing, Reset = Reset}
+return {CheckBlacklist = CheckBlacklist, getFrontBlacklist = getFrontBlacklist, getTopBlacklist = getTopBlacklist, getLocation = getLocation, returnLocation = returnLocation, returnDirection = returnDirection, returnStatus = returnStatus, getFacing = getFacing, setFacing = setFacing, Reset = Reset}

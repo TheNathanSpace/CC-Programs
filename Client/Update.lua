@@ -1,4 +1,4 @@
--- 0.2.3
+-- 0.3.0
 
 local Util = require("Util")
 

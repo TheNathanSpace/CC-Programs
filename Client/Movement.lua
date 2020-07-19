@@ -1,4 +1,4 @@
--- 0.2.1
+-- 0.3.0
 
 local World = require("World")
 
@@ -50,7 +50,6 @@ function DetermineMovement() -- Only running like every 5 ticks or something
 	else
 		moveChance = moveChance + 1
 	end
-	
 end
 
 return {DetermineMovement = DetermineMovement, moveChance = moveChance}
