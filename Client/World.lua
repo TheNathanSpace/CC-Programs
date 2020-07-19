@@ -5,7 +5,7 @@ y = nil
 z = nil
 
 facingNum = 1 -- 1 = North, 2 = East, 3 = South, 4 = West
-facingDirection = nil -- Calculate by checking change in location
+facingDirection = "unknown" -- Calculate by checking change in location
 
 previousLocation = {prevX = nil, prevY = nil, prevZ = nil}
 
@@ -47,15 +47,12 @@ function getTopBlacklist()
 	return blacklistedTop
 end
 
-function getLocation()
-	local hasPrevious = true
-	if previousLocation.prevX == nil then
-		hasPrevious = false
-	end
-	
+function getLocation()	
 	x, y, z = gps.locate()
 	
-	getDirection()
+	if not (previousLocation.prevX == nil) then
+		getDirection()
+	end
 end
 
 function getDirection()
