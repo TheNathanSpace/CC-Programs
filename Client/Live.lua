@@ -1,4 +1,4 @@
--- 0.3.3
+-- 0.3.4
 
 local World = require("World")
 local Movement = require("Movement")
@@ -23,6 +23,7 @@ print("Health: ", Items.getHealth())
 function getDeathMessage()
 	local deathMessages = {"No one's ever really gone.", "I will burn like the heathen kings of old!", "The Lenny that dances twice as hard dances half as long.", "Why is fuel set to DOUBLE TRUUUUUEEEEEEEEE", "I gave you all I had... I did..."}
 	return deathMessages[math.random(1, #deathMessages)]
+end
 
 function DrawDisplay()
 	if (not (Items.getHealth() <= 0)) and (Items.getChanged() == true) then
