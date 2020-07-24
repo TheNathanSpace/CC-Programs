@@ -73,4 +73,4 @@ function Reset()
 	changed = false
 end
 
-return {GetInventory = GetInventory, CheckForItems = CheckForItems, getHealth = getHealth, getChanged = getChanged, Reset = Reset}
+return {GetInventory = GetInventory, CheckForItems = CheckForItems, getHealth = getHealth, getChanged = getChanged, getSpeedItems = getSpeedItems, Reset = Reset}
