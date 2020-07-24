@@ -1,4 +1,4 @@
--- 0.3.2
+-- 0.3.3
 
 local World = require("World")
 local Movement = require("Movement")
@@ -11,7 +11,7 @@ rednet.open("left")
 term.clear()
 shell.run("clear")
 
-peripheral.find("speaker").playSound("quark:entity.stoneling.michael", 3, 3)
+peripheral.find("speaker").playSound("quark:entity.stoneling.michael", 3, 0)
 
 for i = 0, 13 do
 	print(" ")
@@ -19,6 +19,10 @@ for i = 0, 13 do
 end
 
 print("Health: ", Items.getHealth())
+
+function getDeathMessage()
+	local deathMessages = {"No one's ever really gone.", "I will burn like the heathen kings of old!", "The Lenny that dances twice as hard dances half as long.", "Why is fuel set to DOUBLE TRUUUUUEEEEEEEEE", "I gave you all I had... I did..."}
+	return deathMessages[math.random(1, #deathMessages)]
 
 function DrawDisplay()
 	if (not (Items.getHealth() <= 0)) and (Items.getChanged() == true) then
@@ -46,7 +50,7 @@ function main_live()
 		Tick()
 		
 		if(Items.getHealth() <= 0) then
-			print("No one's ever really gone.")
+			print(getDeathMessage())
 			break
 		end
 	end

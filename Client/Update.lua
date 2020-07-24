@@ -27,7 +27,7 @@ shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/
 os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Update.lua", "Update")
 os.sleep(.4)
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Util.lua", "Util")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Util.lua", "Util")
 os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/World.lua", "World")
 os.sleep(.4)
