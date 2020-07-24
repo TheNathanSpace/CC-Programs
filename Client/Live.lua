@@ -1,4 +1,4 @@
--- 0.3.0
+-- 0.3.2
 
 local World = require("World")
 local Movement = require("Movement")
@@ -10,6 +10,8 @@ rednet.open("left")
 
 term.clear()
 shell.run("clear")
+
+peripheral.find("speaker").playSound("quark:entity.stoneling.michael", 3, 3)
 
 for i = 0, 13 do
 	print(" ")
@@ -23,8 +25,6 @@ function DrawDisplay()
 		term.clear()
 		print("Health: ", Items.getHealth())
 	end
-	
-	print(World.returnStatus())
 end
 
 function Reset()
@@ -36,6 +36,7 @@ function Tick()
 	Items.CheckForItems()
 	World.getLocation()
 	Movement.DetermineMovement()
+	Comms.pickUp()
 	DrawDisplay()
 	Reset()
 end
