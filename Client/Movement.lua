@@ -1,4 +1,4 @@
--- 0.3.9
+-- 0.3.10
 
 local World = require("World")
 local Items = require("Items")
@@ -48,17 +48,18 @@ function DetermineMovement()
 	end
 	
 	if(turtle.detect()) then
-		turnChance = 101
+		ChangeDirection(true)
+		turnChance = 0
+		turnGoal = math.random(1, 200)
 	end
 	
 	mapSpeed()
-	
 	
 	if(moveChance >= speed) then
 		if(turnChance > turnGoal) then
 			ChangeDirection(true)
 			turnChance = 0
-			turnGoal = math.random(1, 20)
+			turnGoal = math.random(1, 200)
 		else
 			turnChance = turnChance + 1
 			turtle.forward()
