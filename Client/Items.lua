@@ -1,9 +1,8 @@
--- 0.3.3
+-- 0.3.4
 
 health = 50
 changed = false
 local World = require("World")
-local Movement = Movement or require("Movement")
 
 speedItems = 0
 
