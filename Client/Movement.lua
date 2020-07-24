@@ -1,4 +1,4 @@
--- 0.3.8
+-- 0.3.9
 
 local World = require("World")
 local Items = require("Items")
@@ -51,7 +51,6 @@ function DetermineMovement()
 	
 	mapSpeed()
 	
-	turnChance > math.random(1, 10)
 	if(moveChance >= speed) then
 		if(turnChance >= 10) then
 			ChangeDirection(true)
