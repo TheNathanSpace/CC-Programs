@@ -1,6 +1,7 @@
--- 0.3.1
+-- 0.3.2
 
 local World = require("World")
+local Items = require("Items")
 
 turnTo = 0
 
@@ -18,6 +19,16 @@ function ChangeDirection(isRandom)
 	end
 	
 	turning = true
+end
+
+function mapSpeed()
+	if Items.getSpeedItems() >= 5 then
+		speed = 0
+		return
+	end
+	
+	local speedMap = {0 = 5, 1 = 4, 2 = 3, 3 = 2, 4 = 1}
+	speed = speedMap[Items.getSpeedItems()]
 end
 
 function DetermineMovement() -- Only running like every 5 ticks or something
@@ -38,6 +49,10 @@ function DetermineMovement() -- Only running like every 5 ticks or something
 		turnChance = 101
 	end
 	
+	if speed == 0 then
+		speed = 5
+	end
+	
 	if(moveChance >= speed) then
 		if(turnChance >= 10) then
 			ChangeDirection(true)
@@ -51,10 +66,6 @@ function DetermineMovement() -- Only running like every 5 ticks or something
 	else
 		moveChance = moveChance + 1
 	end
-end
-
-function setSpeed(newSpeed)
-	speed = newSpeed
 end
 
 return {DetermineMovement = DetermineMovement, moveChance = moveChance, setSpeed = setSpeed}

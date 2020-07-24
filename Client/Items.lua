@@ -5,6 +5,8 @@ changed = false
 local World = require("World")
 local Movement = require("Movement")
 
+speedItems = 0
+
 function Scream()
 	local sounds = {"quark:entity.stoneling.die"}
 	local key = math.random(1, 1)
@@ -53,8 +55,7 @@ function CheckForItems()
 	end
 	
 	-- Speed
-	local speedItems = GetInventory("sugar")
-	Movement.setSpeed(speedItems)
+	speedItems = GetInventory("sugar")
 end
 
 function getHealth()
@@ -63,6 +64,10 @@ end
 
 function getChanged()
 	return changed
+end
+
+function getSpeedItems()
+	return speedItems
 end
 
 function Reset()

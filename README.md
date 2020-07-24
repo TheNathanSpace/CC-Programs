@@ -2,4 +2,5 @@
 
 To do list:
 
- - Adjustable speed based on items in inventory 
+ - Adjustable speed based on items in inventory
+ - Reverse speed (lower = slower)
