@@ -2,5 +2,4 @@
 
 To do list:
 
- - Mom pick me up I'm scared
- - Randomized death messages
+ - Adjustable speed based on items in inventory 

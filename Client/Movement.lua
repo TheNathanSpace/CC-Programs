@@ -1,9 +1,10 @@
--- 0.3.0
+-- 0.3.1
 
 local World = require("World")
 
 turnTo = 0
 
+speed = 5
 moveChance = 0
 turnChance = 0
 turning = false
@@ -37,7 +38,7 @@ function DetermineMovement() -- Only running like every 5 ticks or something
 		turnChance = 101
 	end
 	
-	if(moveChance >= 5) then
+	if(moveChance >= speed) then
 		if(turnChance >= 10) then
 			ChangeDirection(true)
 			turnChance = 0
@@ -52,4 +53,8 @@ function DetermineMovement() -- Only running like every 5 ticks or something
 	end
 end
 
-return {DetermineMovement = DetermineMovement, moveChance = moveChance}
+function setSpeed(newSpeed)
+	speed = newSpeed
+end
+
+return {DetermineMovement = DetermineMovement, moveChance = moveChance, setSpeed = setSpeed}

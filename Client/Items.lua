@@ -1,8 +1,9 @@
--- 0.3.0
+-- 0.3.1
 
 health = 50
 changed = false
 local World = require("World")
+local Movement = require("Movement")
 
 function Scream()
 	local sounds = {"quark:entity.stoneling.die"}
@@ -30,7 +31,7 @@ end
 
 function CheckForItems()
 	local oldBricks = GetInventory("brick")
-	
+
 	World.CheckBlacklist()
 
 	if(not World.getFrontBlacklist()) then
@@ -41,6 +42,7 @@ function CheckForItems()
 		local suckUp = turtle.suckUp()
 	end
 
+	-- Health
 	local newBricks = GetInventory("brick")
 	
 	if(newBricks > oldBricks) then
@@ -49,6 +51,10 @@ function CheckForItems()
 		changed = true
 		health = health - change
 	end
+	
+	-- Speed
+	local speedItems = GetInventory("sugar")
+	Movement.setSpeed(speedItems)
 end
 
 function getHealth()
