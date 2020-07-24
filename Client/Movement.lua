@@ -1,4 +1,4 @@
--- 0.3.3
+-- 0.3.4
 
 local World = require("World")
 local Items = require("Items")
@@ -24,10 +24,10 @@ end
 function mapSpeed()
 	if Items.getSpeedItems() >= 5 then
 		speed = 0
-		break
+		return
 	end
 	
-	local speedMap = {0 = 5, 1 = 4, 2 = 3, 3 = 2, 4 = 1}
+	local speedMap = {[0] = 5, [1] = 4, [2] = 3, [3] = 2, [4] = 1}
 	speed = speedMap[Items.getSpeedItems()]
 end
 
