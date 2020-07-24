@@ -1,7 +1,7 @@
--- 0.3.4
+-- 0.3.5
 
 local World = require("World")
-local Items = require("Items")
+local Items = Items or Items = require("Items")
 
 turnTo = 0
 
@@ -31,7 +31,7 @@ function mapSpeed()
 	speed = speedMap[Items.getSpeedItems() + 1]
 end
 
-function DetermineMovement() -- Only running like every 5 ticks or something
+function DetermineMovement()
 	if(turning) then
 		if(not (World.getFacing() == turnTo)) then
 			turtle.turnRight()
@@ -49,9 +49,7 @@ function DetermineMovement() -- Only running like every 5 ticks or something
 		turnChance = 101
 	end
 	
-	if speed == 0 then
-		speed = 5
-	end
+	mapSpeed()
 	
 	if(moveChance >= speed) then
 		if(turnChance >= 10) then
