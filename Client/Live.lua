@@ -11,7 +11,7 @@ rednet.open("left")
 term.clear()
 shell.run("clear")
 
-peripheral.find("speaker").playSound("quark:entity.stoneling.michael", 3, 0)
+peripheral.find("speaker").playSound("quark:entity.stoneling.michael", 3, 1)
 
 for i = 0, 13 do
 	print(" ")

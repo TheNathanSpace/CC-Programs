@@ -1,4 +1,4 @@
--- 0.3.1
+-- 0.3.2
 
 local World = require("World")
 local Items = require("Items")
@@ -29,10 +29,12 @@ function broadcastLocation(targetID)
 	rednet.send(targetID, formLocation(x, y, z), "lenny_location_response")
 end
 
+local sentPickUp = false
 function pickUp()
-	if (Items.getHealth() < 35) then
+	if (Items.getHealth() < 35) and (not sentPickUp) then
 		local pickUpMessage = "Mom pick me up I'm scared\n" .. "My health is at " .. Items.getHealth()
 		rednet.broadcast("Mom pick me up I'm scared", "lenny_scared")
+		sentPickUp = true
 	end
 end
 
