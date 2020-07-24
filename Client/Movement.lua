@@ -1,4 +1,4 @@
--- 0.3.2
+-- 0.3.3
 
 local World = require("World")
 local Items = require("Items")
@@ -24,7 +24,7 @@ end
 function mapSpeed()
 	if Items.getSpeedItems() >= 5 then
 		speed = 0
-		return
+		break
 	end
 	
 	local speedMap = {0 = 5, 1 = 4, 2 = 3, 3 = 2, 4 = 1}
@@ -68,4 +68,4 @@ function DetermineMovement() -- Only running like every 5 ticks or something
 	end
 end
 
-return {DetermineMovement = DetermineMovement, moveChance = moveChance, setSpeed = setSpeed}
+return {DetermineMovement = DetermineMovement, moveChance = moveChance}
