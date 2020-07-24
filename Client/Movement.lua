@@ -27,8 +27,8 @@ function mapSpeed()
 		return
 	end
 	
-	local speedMap = {[0] = 5, [1] = 4, [2] = 3, [3] = 2, [4] = 1}
-	speed = speedMap[Items.getSpeedItems()]
+	local speedMap = {5, 4, 3, 2, 1}
+	speed = speedMap[Items.getSpeedItems() + 1]
 end
 
 function DetermineMovement() -- Only running like every 5 ticks or something
