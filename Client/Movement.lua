@@ -1,7 +1,7 @@
--- 0.3.5
+-- 0.3.6
 
 local World = require("World")
-local Items = Items or Items = require("Items")
+local Items = Items or require("Items")
 
 turnTo = 0
 
