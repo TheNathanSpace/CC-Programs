@@ -78,7 +78,6 @@ function findPath(endLocation, startLocation) -- Parameters here are named based
 
 	local neighborAdjustments = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} }
 	
-	-- Start of loop
 	while true do
 		local neighborKeys = {}
 
