@@ -1,4 +1,4 @@
--- 0.3.9
+-- 0.4.0
 
 local World = require("World")
 local Items = require("Items")

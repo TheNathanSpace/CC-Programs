@@ -1,4 +1,4 @@
--- 0.3.4
+-- 0.4.0
 
 local World = require("World")
 local Movement = require("Movement")

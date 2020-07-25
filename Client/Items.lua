@@ -1,4 +1,4 @@
--- 0.3.4
+-- 0.4.0
 
 health = 50
 changed = false
