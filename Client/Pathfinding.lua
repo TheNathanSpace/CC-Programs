@@ -35,7 +35,8 @@ function processLocations(keyStart)
 				
 				local neighborKey = createKey(newX, newZ)
 				
-				table.insert(neighborKeys, neighborKey, distance + 1)
+				neighborKeys[neighborKey] = distance + 1
+		--		table.insert(neighborKeys, neighborKey, distance + 1)
 			end
 			
 			for neighborKey, newDistance in pairs(neighborKeys) do
@@ -87,7 +88,8 @@ function findPath(endLocation, startLocation) -- Parameters here are named based
 
 			local neighborKey = createKey(newX, newZ)
 
-			table.insert(neighborKeys, neighborKey, "")
+			neighborKeys[neighborKey] = ""
+	--		table.insert(neighborKeys, neighborKey, "")
 		end
 
 		local lowestDistanceKey = nil
@@ -111,11 +113,3 @@ function findPath(endLocation, startLocation) -- Parameters here are named based
 		end
 	end
 end
-
-
--- You should save the map to the server's disk so everyone can reference it. Clients will download their own copy of the map.
-
--- 1. Find start location. Mark it as the current node.
--- 2. Find neighbors of the current node and find the distance for each of those.
--- 3. If the distance is shorter than its current distance, replace the node's distance. Add that node to the list of nodes to keep checking.
--- 4. Remove the current node from the list of nodes.
