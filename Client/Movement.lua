@@ -2,6 +2,7 @@
 
 local World = require("World")
 local Items = require("Items")
+local Mapping = require("Mapping")
 
 turnTo = 0
 
@@ -32,37 +33,39 @@ function mapSpeed()
 end
 
 function DetermineMovement()
-	if(turning) then
-		if(not (World.getFacing() == turnTo)) then
-			turtle.turnRight()
-			World.setFacing(World.getFacing() + 1)
-			
-			if(World.getFacing() == 5) then
-				World.setFacing(1)
+	if not Mapping.getCurrentlyMapping then
+		if(turning) then
+			if(not (World.getFacing() == turnTo)) then
+				turtle.turnRight()
+				World.setFacing(World.getFacing() + 1)
+				
+				if(World.getFacing() == 5) then
+					World.setFacing(1)
+				end
+			else
+				turning = false
 			end
-		else
-			turning = false
-		end
-	end
-	
-	if(turtle.detect()) then
-		turnChance = 101
-	end
-	
-	mapSpeed()
-	
-	if(moveChance >= speed) then
-		if(turnChance >= 10) then
-			ChangeDirection(true)
-			turnChance = 0
-		else
-			turnChance = turnChance + 1
-			turtle.forward()
 		end
 		
-		moveChance = 0
-	else
-		moveChance = moveChance + 1
+		if(turtle.detect()) then
+			turnChance = 101
+		end
+		
+		mapSpeed()
+		
+		if(moveChance >= speed) then
+			if(turnChance >= 10) then
+				ChangeDirection(true)
+				turnChance = 0
+			else
+				turnChance = turnChance + 1
+				turtle.forward()
+			end
+			
+			moveChance = 0
+		else
+			moveChance = moveChance + 1
+		end
 	end
 end
 

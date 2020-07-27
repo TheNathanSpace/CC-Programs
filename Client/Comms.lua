@@ -3,13 +3,15 @@
 local World = require("World")
 local Items = require("Items")
 
-local protocolString = "lenny_location"
-
 function openComms()
 	while true do
 		local senderId, message, protocol = listenForMessage()
-		if protocol == protocolString then
+		if protocol == "lenny_location" then
 			broadcastLocation(senderId)
+		end
+		
+		if protocol == "start_mapping" then
+			
 		end
 	end
 end

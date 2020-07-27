@@ -4,6 +4,7 @@ local World = require("World")
 local Movement = require("Movement")
 local Items = require("Items")
 local Comms = require("Comms")
+local Mapping = require("Mapping")
 
 shell.run("label", "set", "Lenny")
 rednet.open("left")
@@ -38,12 +39,14 @@ function Reset()
 end
 
 function Tick()
-	Items.CheckForItems()
-	World.getLocation()
-	Movement.DetermineMovement()
-	Comms.pickUp()
-	DrawDisplay()
-	Reset()
+	if not Mapping.getCurrentlyMapping() then
+		World.getLocation()
+		Items.CheckForItems()
+		Comms.pickUp()
+		Movement.DetermineMovement()
+		DrawDisplay()
+		Reset()
+	end
 end
 
 function main_live()

@@ -1,4 +1,4 @@
--- 0.1.1
+-- 0.2.0
 
 function readMessages()
 	while true do
@@ -19,6 +19,9 @@ function sendMessages()
 		if userInput == "call lenny" then
 			rednet.broadcast(" ", "lenny_location")
 		end
+		
+		if userInput == "start mapping" then
+			rednet.broadcast(" ", "start_mapping")
 	end
 end
 

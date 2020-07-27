@@ -4,8 +4,8 @@ x = nil
 y = nil
 z = nil
 
-facingNum = 1 -- 1 = North, 2 = East, 3 = South, 4 = West
-facingDirection = "unknown"
+facingNum = nil -- 1 = North, 2 = East, 3 = South, 4 = West
+facingDirection = nil
 
 previousLocation = {prevX = nil, prevY = nil, prevZ = nil}
 

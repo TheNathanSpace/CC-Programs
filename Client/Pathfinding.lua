@@ -113,3 +113,5 @@ function findPath(endLocation, startLocation) -- Parameters here are named based
 		end
 	end
 end
+
+return {createKey = createKey, parseKey = parseKey}
