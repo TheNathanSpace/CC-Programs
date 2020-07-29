@@ -1,13 +1,23 @@
 -- 0.4.0
 
 local Util = require("Util")
+local World = require("World")
+local Movement = require("Movement")
 
 openLocations = {} -- Have to scan the room to fill this up when the server goes online. openLocations["-1034/582"] = ""
 distancedLocations = openLocations -- Add distances as you get them.
 locationsToTry = openLocations -- Add locations that still need to be tried. Remove the locations that have been tried and don't need to be retried.
 finalPath = {}
 
+currentlyPathfinding = false
+
+function getCurrentlyPathfinding()
+	return currentlyPathfinding
+end
+
 function processLocations(keyStart, keyEnd, mappings)
+	
+	currentlyPathfinding = true
 	
 	if not (mappings == nil) then
 		distancedLocations = mappings
@@ -122,15 +132,67 @@ function findPath(endLocation, startLocation) -- Parameters here are named based
 			end
 		end
 		
-		followPath()
+		followPath(startLocation, endLocation)
 	else
 		print("Can't navigate this")
 	end
 end
 
-function followPath()
+function determineMovement(keyToMoveTo)
+	local moveToX, moveToZ = Util.parseLocationKey(keyToMoveTo)
+	local currentX, currentY, currentZ = World.returnLocation()
 	
+	if currentX < moveToX then -- 1 = North, 2 = East, 3 = South, 4 = West
+		facingNum = 2
+	end
+	if currentX > moveToX then 
+		facingNum = 4
+	end
+	if currentZ < moveToZ then 
+		facingNum = 3
+	end
+	if currentZ > moveToZ then 
+		facingNum = 1
+	end
 	
+	while not (World.getFacing() == facingNum) do 
+		Movement.turnRight()
+	end
+	
+	turtle.forward()
+	
+	return true
+end
+
+function followPath(startLocation, endLocation)
+	while true do
+		local x, y, z = World.returnLocation()
+		if Util.createLocationKey(x, z) == endLocation then break end
+		
+		local neighborAdjustments = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} }
+
+		local neighborKeys = {}
+		
+		for iterator, neighbor in ipairs(neighborAdjustments) do
+			local newX = currentX + neighbor[1]
+			local newZ = currentZ + neighbor[2]
+
+			local neighborKey = Util.createLocationKey(newX, newZ)
+			neighborKeys[neighborKey] = ""
+		end
+
+		local keyToMoveTo = nil
+		for key, fakeDistance in neighborKeys do
+			if Util.hasKey(finalPath, key) then
+				keyToMoveTo = key
+				break
+			end
+		end
+
+		local done = determineMovement(keyToMoveTo, startLocation)
+	end
+	
+	currentlyPathfinding = false
 end
 
 function Reset()
@@ -139,4 +201,4 @@ function Reset()
 	finalPath = {}
 end
 
-return {Util.createLocationKey = Util.createLocationKey, Util.parseLocationKey = Util.parseLocationKey, Reset = Reset}
+return {getCurrentlyPathfinding = getCurrentlyPathfinding, Reset = Reset}

@@ -75,6 +75,7 @@ function getDirection()
 end
 
 function returnLocation()
+	getLocation()
 	return x, y, z
 end
 

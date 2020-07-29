@@ -5,6 +5,7 @@ local Movement = require("Movement")
 local Items = require("Items")
 local Comms = require("Comms")
 local Mapping = require("Mapping")
+local Pathfinding = require("Pathfinding")
 
 shell.run("label", "set", "Lenny")
 rednet.open("left")
@@ -39,7 +40,7 @@ function Reset()
 end
 
 function Tick()
-	if not Mapping.getCurrentlyMapping() then
+	if (not Mapping.getCurrentlyMapping()) or (not Pathfinding.getCurrentlyPathfinding()) then
 		World.getLocation()
 		Items.CheckForItems()
 		Comms.pickUp()

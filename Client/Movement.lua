@@ -40,6 +40,8 @@ function turnRight()
 		World.setFacing(1)
 	end
 	
+	Mapping.setCurrentFacing(World.getFacing())
+	
 	return World.getFacing()
 end
 
@@ -51,6 +53,8 @@ function turnLeft()
 		World.setFacing(4)
 	end
 	
+	Mapping.setCurrentFacing(World.getFacing())
+
 	return World.getFacing()
 end
 

@@ -1,20 +1,34 @@
 -- 0.4.0
 
+local Util = require("Util")
 local World = require("World")
 local Movement = require("Movement")
+local Pathfinding = require("Pathfinding")
 
 currentlyMapping = false -- Note that when you start mapping all of Live.Tick() is stopped. You'll have to remember to call Reset() when needed.
+
+currentX = nil
+currentY = nil
+currentZ = nil
+currentFacing = nil
+
+traversedOpenSpaces = {} -- This is the big list that everyone will reference. traversedOpenSpaces["-1034/582"] = ""
+uncheckedOpenSpaces = {}
 
 function getCurrentlyMapping()
 	return currentlyMapping
 end
 
+function setCurrentFacing(newCurrentFacing)
+	currentFacing = newCurrentFacing
+end
+
 function turnRight()
-	currentFacing = Movement.turnRight()
+	Movement.turnRight()
 end
 
 function turnLeft()
-	currentFacing = Movement.turnLeft()
+	Movement.turnLeft()
 end
 
 function addCurrentLocation()
@@ -23,11 +37,10 @@ function addCurrentLocation()
 	traversedOpenSpaces[currentLocationKey] = ""
 end
 
-traversedOpenSpaces = {} -- This is the big list that everyone will reference. traversedOpenSpaces["-1034/582"] = ""
-uncheckedOpenSpaces = {}
+-- Start loop
 
-local currentX, startY, currentZ = World.returnLocation()
-local currentFacing = World.getFacing()
+currentX, startY, currentZ = World.returnLocation()
+currentFacing = World.getFacing()
 currentlyMapping = true
 
 if currentX == nil then
@@ -80,11 +93,12 @@ while true do
 			turnRight()
 			addCurrentLocation()
 		else
-			-- Gotta go an open spot. Pathfind with the existing map? There should be enough nodes to get there.
+			local currentLocationKey = Util.createLocationKey(currentX, currentZ)
+			Pathfinding.processLocations(currentLocationKey, Util.getFirstKey(uncheckedOpenSpaces), traversedOpenSpaces) -- Wait for this to finish
 		end
 	end
 	
 	turtle.forward()
 end
 
-return {getCurrentlyMapping = getCurrentlyMapping}
+return {getCurrentlyMapping = getCurrentlyMapping, setCurrentFacing = setCurrentFacing}

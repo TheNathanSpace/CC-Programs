@@ -73,5 +73,10 @@ function parseLocationKey(stringKey)
 	return parsedTable[1], parsedTable[2]
 end
 
+function getFirstKey(table)
+	for key, value in table do
+		return key
+	end
+end
 
 return {hasValue = hasValue, hasKey = hasKey, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable, printTable = printTable, split = split, createLocationKey = createLocationKey, parseLocationKey = parseLocationKey}
