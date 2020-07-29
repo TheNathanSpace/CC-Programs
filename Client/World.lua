@@ -50,7 +50,7 @@ end
 function getLocation()	
 	x, y, z = gps.locate()
 	
-	if not (previousLocation.prevX == nil) then
+	if (facingNum == nil) and (not (previousLocation.prevX == nil)) then
 		getDirection()
 	end
 end
@@ -92,6 +92,26 @@ end
 
 function setFacing(newFacing)
 	facingNum = newFacing
+	
+	if facingNum == 1 then facingDirection = "north" end
+	if facingNum == 2 then facingDirection = "east" end
+	if facingNum == 3 then facingDirection = "south" end
+	if facingNum == 4 then facingDirection = "west" end
+end
+
+function getFacingBlock()
+	local facingX, facingY, facingZ = x, y, z
+	
+	if not (facingX == nil) then
+		if facingNum == 1 then facingZ = facingZ - 1 end
+		if facingNum == 2 then facingX = facingX + 1 end
+		if facingNum == 3 then facingZ = facingZ + 1 end
+		if facingNum == 4 then facingX = facingX - 1 end
+		
+		return facingX, facingY, facingZ
+	end
+	
+	return nil
 end
 
 function Reset()
@@ -103,4 +123,4 @@ function Reset()
 	previousLocation.prevZ = z
 end
 
-return {CheckBlacklist = CheckBlacklist, getFrontBlacklist = getFrontBlacklist, getTopBlacklist = getTopBlacklist, getLocation = getLocation, returnLocation = returnLocation, returnDirection = returnDirection, returnStatus = returnStatus, getFacing = getFacing, setFacing = setFacing, Reset = Reset}
+return {CheckBlacklist = CheckBlacklist, getFrontBlacklist = getFrontBlacklist, getTopBlacklist = getTopBlacklist, getLocation = getLocation, returnLocation = returnLocation, returnDirection = returnDirection, returnStatus = returnStatus, getFacing = getFacing, setFacing = setFacing, getFacingBlock = getFacingBlock, Reset = Reset}

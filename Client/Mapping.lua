@@ -1,11 +1,7 @@
- 1. Go in straight lines.
-	a. Choose +X. Go in that direction. While doing this, note nodes you've been to. Note nodes that you pass that are open. When you hit a wall, reverse (-X) until you hit a wall. TODO: Update steps for the flipped direction.
-	b. Once you can't go any further, choose +Z.
-	c. Go that direction until a node in the +X direction is open.
-	d. Go back to Step A.
- 2. Once you're trapped on all sides by impassable nodes or nodes you've been to, go back to the first open node you recorded. Do Step 1, but go whichever way is open when you hit a wall.
+-- 0.4.0
 
 local World = require("World")
+local Movement = require("Movement")
 
 currentlyMapping = false -- Note that when you start mapping all of Live.Tick() is stopped. You'll have to remember to call Reset() when needed.
 
@@ -13,20 +9,82 @@ function getCurrentlyMapping()
 	return currentlyMapping
 end
 
-traversedOpenSpaces = {}
-uncheckedOpenSpaces = {}
-
-local startX, startY, startZ = World.returnLocation()
-local startFacing = World.returnFacing()
-currentlyMapping = true
-
-if startX == nil then
-	turtle.forward()
-	World.getLocation()
-	startX, startY, startZ = World.returnLocation()
-	startFacing = World.returnFacing()
+function turnRight()
+	currentFacing = Movement.turnRight()
 end
 
+function turnLeft()
+	currentFacing = Movement.turnLeft()
+end
 
+function addCurrentLocation()
+	currentX, startY, currentZ = World.returnLocation()
+	local currentLocationKey = Util.createLocationKey(currentX, currentZ)
+	traversedOpenSpaces[currentLocationKey] = ""
+end
+
+traversedOpenSpaces = {} -- This is the big list that everyone will reference. traversedOpenSpaces["-1034/582"] = ""
+uncheckedOpenSpaces = {}
+
+local currentX, startY, currentZ = World.returnLocation()
+local currentFacing = World.getFacing()
+currentlyMapping = true
+
+if currentX == nil then
+	turtle.forward()
+	World.getLocation()
+	currentX, startY, currentZ = World.returnLocation()
+	currentFacing = World.getFacing()
+end
+
+while not (currentFacing == 4) do
+	turnRight()
+end
+
+while true do
+	addCurrentLocation()
+	
+	-- Check left
+	turnLeft()
+	local leftClear = not turtle.detect()
+	if leftClear then
+		local facingX, facingY, facingZ = World.getFacingBlock()
+		local facingLocationKey = Util.createLocationKey(facingX, facingZ)
+		uncheckedOpenSpaces[facingLocationKey] = ""
+	end
+	
+	-- Check right
+	turnRight()
+	turnRight()
+	local rightClear = not turtle.detect()
+	if rightClear then
+		local facingX, facingY, facingZ = World.getFacingBlock()
+		local facingLocationKey = Util.createLocationKey(facingX, facingZ)
+		uncheckedOpenSpaces[facingLocationKey] = ""
+	end
+	
+	turnLeft() -- Reset to straight
+	
+	-- Check front
+	local frontClear = not turtle.detect()
+	
+	if not frontClear then
+		if leftClear then
+			turnLeft()
+			turtle.forward()
+			turnLeft()
+			addCurrentLocation()
+		else if rightClear then
+			turnRight()
+			turtle.forward()
+			turnRight()
+			addCurrentLocation()
+		else
+			-- Gotta go an open spot. Pathfind with the existing map? There should be enough nodes to get there.
+		end
+	end
+	
+	turtle.forward()
+end
 
 return {getCurrentlyMapping = getCurrentlyMapping}

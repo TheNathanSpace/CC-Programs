@@ -32,16 +32,33 @@ function mapSpeed()
 	speed = speedMap[Items.getSpeedItems() + 1]
 end
 
+function turnRight()
+	turtle.turnRight()
+	World.setFacing(World.getFacing() + 1)
+
+	if(World.getFacing() == 5) then
+		World.setFacing(1)
+	end
+	
+	return World.getFacing()
+end
+
+function turnLeft()
+	turtle.turnLeft()
+	World.setFacing(World.getFacing() - 1)
+
+	if(World.getFacing() == 0) then
+		World.setFacing(4)
+	end
+	
+	return World.getFacing()
+end
+
 function DetermineMovement()
 	if not Mapping.getCurrentlyMapping then
 		if(turning) then
 			if(not (World.getFacing() == turnTo)) then
-				turtle.turnRight()
-				World.setFacing(World.getFacing() + 1)
-				
-				if(World.getFacing() == 5) then
-					World.setFacing(1)
-				end
+				turnRight()
 			else
 				turning = false
 			end
@@ -69,4 +86,4 @@ function DetermineMovement()
 	end
 end
 
-return {DetermineMovement = DetermineMovement, moveChance = moveChance}
+return {turnRight = turnRight, turnLeft = turnLeft, DetermineMovement = DetermineMovement, moveChance = moveChance}

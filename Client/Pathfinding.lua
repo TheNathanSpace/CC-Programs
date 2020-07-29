@@ -7,16 +7,20 @@ distancedLocations = openLocations -- Add distances as you get them.
 locationsToTry = openLocations -- Add locations that still need to be tried. Remove the locations that have been tried and don't need to be retried.
 finalPath = {}
 
-function createKey(x, z)
-	return x .. "/" .. z
-end
-
-function parseKey(stringKey)
-	local parsedTable = Util.split(stringKey, "/")
-	return parsedTable[1], parsedTable[2]
-end
-
-function processLocations(keyStart)
+function processLocations(keyStart, keyEnd, mappings)
+	
+	if not (mappings == nil) then
+		distancedLocations = mappings
+	else
+		distancedLocations = openLocations
+	end
+	
+	if distancedLocations == nil then 
+		distancedLocations = openLocations
+		distancedLocations = distancedLocations
+		useDistancedLocations = true
+	end
+	
 	if (Util.hasKey(distancedLocations, keyStart)) then
 		distancedLocations[keyStart] = 0
 		
@@ -26,14 +30,14 @@ function processLocations(keyStart)
 			local currentDistance = distancedLocations[key]
 			local newDistance = currentDistance + 1
 			
-			local currentX, currentZ = parseKey(key)
+			local currentX, currentZ = Util.parseLocationKey(key)
 			local neighborKeys = {}
 						
 			for iterator, neighbor in ipairs(neighborAdjustments) do
 				local newX = currentX + neighbor[1]
 				local newZ = currentZ + neighbor[2]
 				
-				local neighborKey = createKey(newX, newZ)
+				local neighborKey = Util.createLocationKey(newX, newZ)
 				
 				neighborKeys[neighborKey] = distance + 1
 		--		table.insert(neighborKeys, neighborKey, distance + 1)
@@ -43,6 +47,8 @@ function processLocations(keyStart)
 				updateLocation(neighborKey, newDistance)
 			end
 		end
+		
+		findPath(keyEnd, keyStart)
 	else
 		print("Not a valid start location!")
 	end
@@ -73,45 +79,64 @@ function updateLocation(key, newDistance)
 end
 
 function findPath(endLocation, startLocation) -- Parameters here are named based on the overarching goal. So, you start from the end location.
-	local endLocationX, endLocationZ = parseKey(endLocation)
+	local endLocationX, endLocationZ = Util.parseLocationKey(endLocation)
 	local currentX = endLocationX
 	local currentZ = endLocationZ
-
-	local neighborAdjustments = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} }
+	local currentDistance = distancedLocations[endLocation]
 	
-	while true do
-		local neighborKeys = {}
+	if not (Util.isEmpty(currentDistance)) then
 
-		for iterator, neighbor in ipairs(neighborAdjustments) do
-			local newX = currentX + neighbor[1]
-			local newZ = currentZ + neighbor[2]
-
-			local neighborKey = createKey(newX, newZ)
-
-			neighborKeys[neighborKey] = ""
-	--		table.insert(neighborKeys, neighborKey, "")
-		end
-
-		local lowestDistanceKey = nil
-		local lowestDistance = 999999999
+		local neighborAdjustments = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} }
 		
-		for neighborKey, blankDistance in pairs(neighborKeys) do
-			local neighborDistance = distancedLocations[neighborKey]
+		while true do
+			local neighborKeys = {}
+
+			for iterator, neighbor in ipairs(neighborAdjustments) do
+				local newX = currentX + neighbor[1]
+				local newZ = currentZ + neighbor[2]
+
+				local neighborKey = Util.createLocationKey(newX, newZ)
+
+				neighborKeys[neighborKey] = ""
+		--		table.insert(neighborKeys, neighborKey, "")
+			end
+
+			local lowestDistanceKey = nil
+			local lowestDistance = 999999999
 			
-			if neighborDistance < lowestDistance then
-				lowestDistanceKey = neighborKey
-				lowestDistance = neighborDistance
+			for neighborKey, blankDistance in pairs(neighborKeys) do
+				local neighborDistance = distancedLocations[neighborKey]
+				
+				if neighborDistance < lowestDistance then
+					lowestDistanceKey = neighborKey
+					lowestDistance = neighborDistance
+				end
+			end
+			
+			table.insert(finalPath, lowestDistanceKey)
+			
+			currentX, currentZ = Util.parseLocationKey(lowestDistanceKey)
+
+			if lowestDistance == 0 then
+				break			
 			end
 		end
 		
-		table.insert(finalPath, lowestDistanceKey)
-		
-		currentX, currentZ = parseKey(lowestDistanceKey)
-
-		if lowestDistance == 0 then
-			break			
-		end
+		followPath()
+	else
+		print("Can't navigate this")
 	end
 end
 
-return {createKey = createKey, parseKey = parseKey}
+function followPath()
+	
+	
+end
+
+function Reset()
+	distancedLocation = {}
+	locationsToTry = {}
+	finalPath = {}
+end
+
+return {Util.createLocationKey = Util.createLocationKey, Util.parseLocationKey = Util.parseLocationKey, Reset = Reset}

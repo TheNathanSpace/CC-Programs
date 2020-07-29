@@ -64,4 +64,14 @@ function split(text, delim)
     return result
 end
 
-return {hasValue = hasValue, hasKey = hasKey, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable, printTable = printTable, split = split}
+function createLocationKey(x, z)
+	return x .. "/" .. z
+end
+
+function parseLocationKey(stringKey)
+	local parsedTable = split(stringKey, "/")
+	return parsedTable[1], parsedTable[2]
+end
+
+
+return {hasValue = hasValue, hasKey = hasKey, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable, printTable = printTable, split = split, createLocationKey = createLocationKey, parseLocationKey = parseLocationKey}
