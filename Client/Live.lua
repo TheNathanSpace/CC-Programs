@@ -1,4 +1,4 @@
--- 0.4.3
+-- 0.4.4
 
 local World = require("World")
 local Movement = require("Movement")
@@ -50,6 +50,10 @@ end
 
 function main_live()
 	while true do
+		if Mapping.getCurrentlyMapping() or Pathfinding.getCurrentlyPathfinding() then
+			sleep(20)
+		end
+		
 		if (not Mapping.getCurrentlyMapping()) and (not Pathfinding.getCurrentlyPathfinding()) then
 			Tick()
 			
@@ -60,7 +64,7 @@ function main_live()
 			end
 		end
 
-=	end
+	end
 end
 
 parallel.waitForAll(main_live, Comms.openComms)  
