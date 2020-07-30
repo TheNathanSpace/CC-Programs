@@ -1,4 +1,4 @@
--- 0.4.2
+-- 0.4.3
 
 local World = require("World")
 local Movement = require("Movement")
@@ -52,14 +52,15 @@ function main_live()
 	while true do
 		if (not Mapping.getCurrentlyMapping()) and (not Pathfinding.getCurrentlyPathfinding()) then
 			Tick()
+			
+			if(Items.getHealth() <= 0) then
+				print("Health: ", Items.getHealth())
+				print(getDeathMessage())
+				break
+			end
 		end
-		
-		if(Items.getHealth() <= 0) then
-			print("Health: ", Items.getHealth())
-			print(getDeathMessage())
-			break
-		end
-	end
+
+=	end
 end
 
 parallel.waitForAll(main_live, Comms.openComms)  
