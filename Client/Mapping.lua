@@ -89,7 +89,7 @@ function doMapping()
 				turtle.forward()
 				turnLeft()
 				addCurrentLocation()
-			else if rightClear
+			elseif rightClear then
 				turnRight()
 				turtle.forward()
 				turnRight()
