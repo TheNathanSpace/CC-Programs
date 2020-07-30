@@ -1,4 +1,4 @@
--- 0.4.1
+-- 0.4.2
 
 function hasValue (tab, val)
 	for index, value in ipairs(tab) do
@@ -105,4 +105,4 @@ function removeKey(t, k)
 	return a
 end
 
-return {hasValue = hasValue, hasKey = hasKey, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable, printTable = printTable, split = split, createLocationKey = createLocationKey, parseLocationKey = parseLocationKey, removeKey = removeKey}
+return {hasValue = hasValue, hasKey = hasKey, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable, printTable = printTable, split = split, createLocationKey = createLocationKey, parseLocationKey = parseLocationKey, getFirstKey = getFirstKey, removeKey = removeKey}
