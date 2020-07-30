@@ -1,4 +1,4 @@
--- 0.4.3
+-- 0.4.4
 
 function hasValue (tab, val)
 	for index, value in ipairs(tab) do
@@ -74,6 +74,7 @@ function parseLocationKey(stringKey)
 end
 
 function getFirstKey(tablex)
+	print(textutils.serialize(tablex)
 	for key, value in tablex do
 		return key
 	end
