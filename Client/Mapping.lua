@@ -1,4 +1,4 @@
--- 0.4.6
+-- 0.4.7
 
 local Util = require("Util")
 local World = require("World")
@@ -72,6 +72,7 @@ function doMapping()
 			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey)) then
 				uncheckedOpenSpaces[facingLocationKey] = ""
 			else
+				print("Left already traversed")
 				leftClear = false
 			end
 		end
@@ -86,6 +87,7 @@ function doMapping()
 			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey)) then
 				uncheckedOpenSpaces[facingLocationKey] = ""
 			else
+				print("Right already traversed")
 				rightClear = false
 			end
 		end
@@ -111,6 +113,7 @@ function doMapping()
 				local keyExists = Util.getFirstKey(uncheckedOpenSpaces)
 				
 				if not (keyExists == nil) then
+					print("Pathfinding to " .. currentLocationKey)
 					local result = Pathfinding.processLocations(currentLocationKey, keyExists, traversedOpenSpaces)
 				
 					while not (currentFacing == 4) do
