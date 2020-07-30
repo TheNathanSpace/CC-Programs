@@ -2,7 +2,6 @@
 
 local Util = require("Util")
 local World = require("World")
-local Movement = require("Movement")
 local Pathfinding = require("Pathfinding")
 
 currentlyMapping = false -- Note that when you start mapping all of Live.Tick() is stopped. You'll have to remember to call Reset() when needed.
@@ -24,10 +23,12 @@ function setCurrentFacing(newCurrentFacing)
 end
 
 function turnRight()
+	local Movement = require("Movement")
 	Movement.turnRight()
 end
 
 function turnLeft()
+	local Movement = require("Movement")
 	Movement.turnLeft()
 end
 
@@ -37,7 +38,7 @@ function addCurrentLocation()
 	traversedOpenSpaces[currentLocationKey] = ""
 end
 
--- Start loop
+-- Start loop. Still gotta figure this out
 
 currentX, startY, currentZ = World.returnLocation()
 currentFacing = World.getFacing()
@@ -94,9 +95,14 @@ while true do
 			addCurrentLocation()
 		else
 			local currentLocationKey = Util.createLocationKey(currentX, currentZ)
-			Pathfinding.processLocations(currentLocationKey, Util.getFirstKey(uncheckedOpenSpaces), traversedOpenSpaces) -- Wait for this to finish
+			local result = Pathfinding.processLocations(currentLocationKey, Util.getFirstKey(uncheckedOpenSpaces), traversedOpenSpaces)
+			
+			while not (currentFacing == 4) do
+				turnRight()
+			end
 		end
 	end
+	-- Should make sure aligned to where you wanna go
 	
 	turtle.forward()
 end

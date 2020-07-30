@@ -1,8 +1,9 @@
 -- 0.4.0
 
+local World = require("World")
+
 health = 50
 changed = false
-local World = require("World")
 
 speedItems = 0
 

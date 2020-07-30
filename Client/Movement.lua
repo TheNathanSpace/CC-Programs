@@ -2,7 +2,6 @@
 
 local World = require("World")
 local Items = require("Items")
-local Mapping = require("Mapping")
 
 turnTo = 0
 
@@ -33,6 +32,8 @@ function mapSpeed()
 end
 
 function turnRight()
+	local Mapping = require("Mapping")
+
 	turtle.turnRight()
 	World.setFacing(World.getFacing() + 1)
 
@@ -46,6 +47,8 @@ function turnRight()
 end
 
 function turnLeft()
+	local Mapping = require("Mapping")
+
 	turtle.turnLeft()
 	World.setFacing(World.getFacing() - 1)
 
@@ -59,6 +62,8 @@ function turnLeft()
 end
 
 function DetermineMovement()
+	local Mapping = require("Mapping")
+
 	if not Mapping.getCurrentlyMapping then
 		if(turning) then
 			if(not (World.getFacing() == turnTo)) then

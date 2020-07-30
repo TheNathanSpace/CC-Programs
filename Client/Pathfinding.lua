@@ -16,7 +16,6 @@ function getCurrentlyPathfinding()
 end
 
 function processLocations(keyStart, keyEnd, mappings)
-	
 	currentlyPathfinding = true
 	
 	if not (mappings == nil) then
@@ -54,13 +53,14 @@ function processLocations(keyStart, keyEnd, mappings)
 			end
 			
 			for neighborKey, newDistance in pairs(neighborKeys) do
-				updateLocation(neighborKey, newDistance)
+				local result = updateLocation(neighborKey, newDistance)
 			end
 		end
 		
-		findPath(keyEnd, keyStart)
+		local result = findPath(keyEnd, keyStart)
+		return result
 	else
-		print("Not a valid start location!")
+		return false
 	end
 end
 
@@ -86,56 +86,8 @@ function updateLocation(key, newDistance)
 	if removeKey then
 		table.remove(locationsToTry, key)
 	end
-end
-
-function findPath(endLocation, startLocation) -- Parameters here are named based on the overarching goal. So, you start from the end location.
-	local endLocationX, endLocationZ = Util.parseLocationKey(endLocation)
-	local currentX = endLocationX
-	local currentZ = endLocationZ
-	local currentDistance = distancedLocations[endLocation]
 	
-	if not (Util.isEmpty(currentDistance)) then
-
-		local neighborAdjustments = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} }
-		
-		while true do
-			local neighborKeys = {}
-
-			for iterator, neighbor in ipairs(neighborAdjustments) do
-				local newX = currentX + neighbor[1]
-				local newZ = currentZ + neighbor[2]
-
-				local neighborKey = Util.createLocationKey(newX, newZ)
-
-				neighborKeys[neighborKey] = ""
-		--		table.insert(neighborKeys, neighborKey, "")
-			end
-
-			local lowestDistanceKey = nil
-			local lowestDistance = 999999999
-			
-			for neighborKey, blankDistance in pairs(neighborKeys) do
-				local neighborDistance = distancedLocations[neighborKey]
-				
-				if neighborDistance < lowestDistance then
-					lowestDistanceKey = neighborKey
-					lowestDistance = neighborDistance
-				end
-			end
-			
-			table.insert(finalPath, lowestDistanceKey)
-			
-			currentX, currentZ = Util.parseLocationKey(lowestDistanceKey)
-
-			if lowestDistance == 0 then
-				break			
-			end
-		end
-		
-		followPath(startLocation, endLocation)
-	else
-		print("Can't navigate this")
-	end
+	return true
 end
 
 function determineMovement(keyToMoveTo)
@@ -193,6 +145,59 @@ function followPath(startLocation, endLocation)
 	end
 	
 	currentlyPathfinding = false
+	
+	return true
+end
+
+function findPath(endLocation, startLocation) -- Parameters here are named based on the overarching goal. So, you start from the end location.
+	local endLocationX, endLocationZ = Util.parseLocationKey(endLocation)
+	local currentX = endLocationX
+	local currentZ = endLocationZ
+	local currentDistance = distancedLocations[endLocation]
+	
+	if not (Util.isEmpty(currentDistance)) then
+
+		local neighborAdjustments = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} }
+		
+		while true do
+			local neighborKeys = {}
+
+			for iterator, neighbor in ipairs(neighborAdjustments) do
+				local newX = currentX + neighbor[1]
+				local newZ = currentZ + neighbor[2]
+
+				local neighborKey = Util.createLocationKey(newX, newZ)
+
+				neighborKeys[neighborKey] = ""
+		--		table.insert(neighborKeys, neighborKey, "")
+			end
+
+			local lowestDistanceKey = nil
+			local lowestDistance = 999999999
+			
+			for neighborKey, blankDistance in pairs(neighborKeys) do
+				local neighborDistance = distancedLocations[neighborKey]
+				
+				if neighborDistance < lowestDistance then
+					lowestDistanceKey = neighborKey
+					lowestDistance = neighborDistance
+				end
+			end
+			
+			table.insert(finalPath, lowestDistanceKey)
+			
+			currentX, currentZ = Util.parseLocationKey(lowestDistanceKey)
+
+			if lowestDistance == 0 then
+				break			
+			end
+		end
+		
+		local result = followPath(startLocation, endLocation)
+		return result
+	else
+		print("Can't navigate this")
+	end
 end
 
 function Reset()
