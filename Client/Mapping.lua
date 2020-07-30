@@ -1,4 +1,4 @@
--- 0.4.1
+-- 0.4.2
 
 local Util = require("Util")
 local World = require("World")
@@ -89,7 +89,7 @@ function doMapping()
 				turtle.forward()
 				turnLeft()
 				addCurrentLocation()
-			else if rightClear then
+			else if rightClear
 				turnRight()
 				turtle.forward()
 				turnRight()
