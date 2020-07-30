@@ -1,7 +1,8 @@
--- 0.4.0
+-- 0.4.1
 
 local World = require("World")
 local Items = require("Items")
+local Mapping = require("Mapping")
 
 function openComms()
 	while true do
@@ -11,7 +12,7 @@ function openComms()
 		end
 		
 		if protocol == "start_mapping" then
-			
+			Mapping.doMapping()
 		end
 	end
 end
