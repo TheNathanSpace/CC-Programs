@@ -1,4 +1,4 @@
--- 0.4.2
+-- 0.4.3
 
 function hasValue (tab, val)
 	for index, value in ipairs(tab) do
@@ -73,8 +73,8 @@ function parseLocationKey(stringKey)
 	return parsedTable[1], parsedTable[2]
 end
 
-function getFirstKey(table)
-	for key, value in table do
+function getFirstKey(tablex)
+	for key, value in tablex do
 		return key
 	end
 end
