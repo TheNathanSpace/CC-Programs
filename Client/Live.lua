@@ -1,4 +1,4 @@
--- 0.4.1
+-- 0.4.2
 
 local World = require("World")
 local Movement = require("Movement")
@@ -40,19 +40,19 @@ function Reset()
 end
 
 function Tick()
-	if (not Mapping.getCurrentlyMapping()) and (not Pathfinding.getCurrentlyPathfinding()) then
-		World.getLocation()
-		Items.CheckForItems()
-		Comms.pickUp()
-		Movement.DetermineMovement()
-		DrawDisplay()
-		Reset()
-	end
+	World.getLocation()
+	Items.CheckForItems()
+	Comms.pickUp()
+	Movement.DetermineMovement()
+	DrawDisplay()
+	Reset()
 end
 
 function main_live()
 	while true do
-		Tick()
+		if (not Mapping.getCurrentlyMapping()) and (not Pathfinding.getCurrentlyPathfinding()) then
+			Tick()
+		end
 		
 		if(Items.getHealth() <= 0) then
 			print("Health: ", Items.getHealth())
