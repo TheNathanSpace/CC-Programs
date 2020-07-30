@@ -1,4 +1,4 @@
--- 0.4.5
+-- 0.4.6
 
 local Util = require("Util")
 local World = require("World")
@@ -69,7 +69,7 @@ function doMapping()
 		if leftClear then
 			local facingX, facingY, facingZ = World.getFacingBlock()
 			local facingLocationKey = Util.createLocationKey(facingX, facingZ)
-			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey) then
+			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey)) then
 				uncheckedOpenSpaces[facingLocationKey] = ""
 			else
 				leftClear = false
@@ -83,7 +83,7 @@ function doMapping()
 		if rightClear then
 			local facingX, facingY, facingZ = World.getFacingBlock()
 			local facingLocationKey = Util.createLocationKey(facingX, facingZ)
-			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey) then
+			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey)) then
 				uncheckedOpenSpaces[facingLocationKey] = ""
 			else
 				rightClear = false
