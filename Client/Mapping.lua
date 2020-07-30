@@ -1,4 +1,4 @@
--- 0.4.7
+-- 0.4.8
 
 local Util = require("Util")
 local World = require("World")
@@ -60,7 +60,7 @@ function doMapping()
 	end
 
 	while true do
-		print("Started mapping loop")
+		facingLocationKey = nil
 		addCurrentLocation()
 		
 		-- Check left
@@ -71,6 +71,7 @@ function doMapping()
 			local facingLocationKey = Util.createLocationKey(facingX, facingZ)
 			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey)) then
 				uncheckedOpenSpaces[facingLocationKey] = ""
+				print("Added left")
 			else
 				print("Left already traversed")
 				leftClear = false
@@ -86,6 +87,7 @@ function doMapping()
 			local facingLocationKey = Util.createLocationKey(facingX, facingZ)
 			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey)) then
 				uncheckedOpenSpaces[facingLocationKey] = ""
+				print("Added right")
 			else
 				print("Right already traversed")
 				rightClear = false
