@@ -1,4 +1,4 @@
--- 0.4.1
+-- 0.4.2
 
 local Util = require("Util")
 
@@ -21,7 +21,6 @@ os.sleep(.4)
 shell.run("delete", "World")
 os.sleep(.4)
 
-
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Comms.lua", "Comms")
 os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Items.lua", "Items")
@@ -41,7 +40,7 @@ os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/World.lua", "World")
 os.sleep(.4)
 
-local fileList = {"live", "World", "Movement", "Items", "Comms", "Update", "Util"}
+local fileList = {"Util", "Comms", "Items", "live", "Mapping", "Movement", "Pathfinding", "Update", "World"}
 
 term.clear()
 
@@ -52,7 +51,7 @@ if fs.exists("VersionHistory.txt") then
 end
 
 if Util.isEmpty(previousVersionsString) then
-	local previousVersionsTable = {World = "0", Movement = "0", Items = "0", Update = "0", Util = "0", live = "0", Comms = "0"}
+	local previousVersionsTable = {Util = "0", Comms = "0", Items = "0", live = "0", Mapping = "0", Movement = "0", Pathfinding = "0", Update = "0", World = "0"}
 	Util.saveTable(previousVersionsTable, "VersionHistory.txt")
 end
 
