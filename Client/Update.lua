@@ -1,4 +1,4 @@
--- 0.4.0
+-- 0.4.1
 
 local Util = require("Util")
 
@@ -8,7 +8,11 @@ shell.run("delete", "Items")
 os.sleep(.4)
 shell.run("delete", "live")
 os.sleep(.4)
+shell.run("delete", "Mapping")
+os.sleep(.4)
 shell.run("delete", "Movement")
+os.sleep(.4)
+shell.run("delete", "Pathfinding")
 os.sleep(.4)
 shell.run("delete", "Update")
 os.sleep(.4)
@@ -17,13 +21,18 @@ os.sleep(.4)
 shell.run("delete", "World")
 os.sleep(.4)
 
+
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Comms.lua", "Comms")
 os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Items.lua", "Items")
 os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Live.lua", "live")
 os.sleep(.4)
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Mapping.lua", "Mapping")
+os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Movement.lua", "Movement")
+os.sleep(.4)
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Pathfinding.lua", "Pathfinding")
 os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Update.lua", "Update")
 os.sleep(.4)
