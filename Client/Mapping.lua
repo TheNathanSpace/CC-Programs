@@ -1,4 +1,4 @@
--- 0.4.3
+-- 0.4.4
 
 local Util = require("Util")
 local World = require("World")
@@ -36,6 +36,7 @@ function addCurrentLocation()
 	currentX, startY, currentZ = World.returnLocation()
 	local currentLocationKey = Util.createLocationKey(currentX, currentZ)
 	traversedOpenSpaces[currentLocationKey] = ""
+	Util.removeKey(uncheckedOpenSpaces, currentLocationKey)
 end
 
 function doMapping()
@@ -52,11 +53,14 @@ function doMapping()
 		currentFacing = World.getFacing()
 	end
 
+	print("Got locations")
+	
 	while not (currentFacing == 4) do
 		turnRight()
 	end
 
 	while true do
+		print("Started mapping loop")
 		addCurrentLocation()
 		
 		-- Check left

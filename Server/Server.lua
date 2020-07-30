@@ -1,4 +1,4 @@
--- 0.2.1
+-- 0.2.2
 
 function readMessages()
 	while true do
@@ -25,9 +25,13 @@ function sendMessages()
 		
 		if userInput == "start mapping" then
 			rednet.broadcast(" ", "start_mapping")
+		end
 	end
 end
 
-term.clear()
+for i = 0, 13 do
+	print(" ")
+	term.clear()
+end
 
 parallel.waitForAll(readMessages, sendMessages)

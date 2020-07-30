@@ -1,4 +1,4 @@
--- 0.4.0
+-- 0.4.1
 
 local Util = require("Util")
 local World = require("World")
@@ -84,7 +84,7 @@ function updateLocation(key, newDistance)
 	end
 	
 	if removeKey then
-		table.remove(locationsToTry, key)
+		Util.removeKey(locationsToTry, removeKey)
 	end
 	
 	return true

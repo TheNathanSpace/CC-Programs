@@ -1,4 +1,4 @@
--- 0.4.0
+-- 0.4.1
 
 function hasValue (tab, val)
 	for index, value in ipairs(tab) do
@@ -79,4 +79,30 @@ function getFirstKey(table)
 	end
 end
 
-return {hasValue = hasValue, hasKey = hasKey, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable, printTable = printTable, split = split, createLocationKey = createLocationKey, parseLocationKey = parseLocationKey}
+function removeKey(t, k)
+	local i = 0
+	local keys, values = {},{}
+	for k,v in pairs(t) do
+		i = i + 1
+		keys[i] = k
+		values[i] = v
+	end
+
+	while i>0 do
+		if keys[i] == k then
+			table.remove(keys, i)
+			table.remove(values, i)
+			break
+		end
+		i = i - 1
+	end
+
+	local a = {}
+	for i = 1,#keys do
+		a[keys[i]] = values[i]
+	end
+
+	return a
+end
+
+return {hasValue = hasValue, hasKey = hasKey, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable, printTable = printTable, split = split, createLocationKey = createLocationKey, parseLocationKey = parseLocationKey, removeKey = removeKey}
