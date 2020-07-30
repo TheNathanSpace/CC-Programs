@@ -1,4 +1,4 @@
--- 0.4.4
+-- 0.4.5
 
 local Util = require("Util")
 local World = require("World")
@@ -65,11 +65,15 @@ function doMapping()
 		
 		-- Check left
 		turnLeft()
-		local leftClear = not turtle.detect()
+		local leftClear = not turtle.detect() -- Make this return false if it's in the traversed list
 		if leftClear then
 			local facingX, facingY, facingZ = World.getFacingBlock()
 			local facingLocationKey = Util.createLocationKey(facingX, facingZ)
-			uncheckedOpenSpaces[facingLocationKey] = ""
+			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey) then
+				uncheckedOpenSpaces[facingLocationKey] = ""
+			else
+				leftClear = false
+			end
 		end
 		
 		-- Check right
@@ -79,7 +83,11 @@ function doMapping()
 		if rightClear then
 			local facingX, facingY, facingZ = World.getFacingBlock()
 			local facingLocationKey = Util.createLocationKey(facingX, facingZ)
-			uncheckedOpenSpaces[facingLocationKey] = ""
+			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey) then
+				uncheckedOpenSpaces[facingLocationKey] = ""
+			else
+				rightClear = false
+			end
 		end
 		
 		turnLeft() -- Reset to straight
