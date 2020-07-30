@@ -1,4 +1,4 @@
--- 0.4.1
+-- 0.4.2
 
 local World = require("World")
 local Items = require("Items")
@@ -12,6 +12,7 @@ function openComms()
 		end
 		
 		if protocol == "start_mapping" then
+			rednet.send(senderId, "Mapping started", "start_mapping_response")
 			Mapping.doMapping()
 		end
 	end

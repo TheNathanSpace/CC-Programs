@@ -1,4 +1,4 @@
--- 0.2.0
+-- 0.2.1
 
 function readMessages()
 	while true do
@@ -8,6 +8,9 @@ function readMessages()
 			print(message)
 		end
 		if protocol == "lenny_scared" then
+			print(message)
+		end
+		if protocol == "start_mapping_response" then
 			print(message)
 		end
 	end

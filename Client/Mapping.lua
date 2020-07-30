@@ -1,4 +1,4 @@
--- 0.4.2
+-- 0.4.3
 
 local Util = require("Util")
 local World = require("World")
@@ -40,7 +40,7 @@ end
 
 function doMapping()
 	-- Start loop. Still gotta figure this out
-
+	print("Mapping started")
 	currentX, startY, currentZ = World.returnLocation()
 	currentFacing = World.getFacing()
 	currentlyMapping = true
