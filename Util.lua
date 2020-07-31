@@ -74,7 +74,7 @@ function parseLocationKey(stringKey)
 end
 
 function getFirstKey(tablex)
-	print(textutils.serialize(tablex)
+	print(textutils.serialize(tablex))
 	for key, value in tablex do
 		return key
 	end
