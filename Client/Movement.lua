@@ -1,4 +1,4 @@
--- 0.4.1
+-- 0.4.2
 
 local World = require("World")
 local Items = require("Items")
@@ -33,9 +33,10 @@ end
 
 function turnRight()
 	local Mapping = require("Mapping")
-
+	
+	print("Get facing: " .. World.getFacing())
 	turtle.turnRight()
-	World.setFacing(World.getFacing() + 1)
+	World.setFacing(World.getFacing() + 1) -- Error
 
 	if(World.getFacing() == 5) then
 		World.setFacing(1)
