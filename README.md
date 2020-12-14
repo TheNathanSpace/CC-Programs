@@ -7,10 +7,12 @@ ___
  * More interesting wandering
  	+ Return to its home
 	+ Navigate between rooms
+ * Lenny dies if you place him down facing a wall
+ * Prints negative health when he dies
  
 ## Pathfinding
 
-This is going to be **insane**. It already is.
+Maybe this will be finished?
 
 ### To-do list:
 
@@ -25,7 +27,7 @@ This is going to be **insane**. It already is.
 
 #### Basic concept:
 1. Go in straight lines.
-
+	
    a. Choose +X. Go in that direction. While doing this, note nodes you've been to. Note nodes that you pass that are open. When you hit a wall, reverse (-X) until you hit a wall. TODO: Update steps for the flipped direction.
    
    b. Once you can't go any further, choose +Z.

@@ -34,6 +34,7 @@ end
 
 function addCurrentLocation()
 	currentX, startY, currentZ = World.returnLocation()
+	print("Current location: " .. currentX .. " " .. currentZ)
 	local currentLocationKey = Util.createLocationKey(currentX, currentZ)
 	traversedOpenSpaces[currentLocationKey] = ""
 	Util.removeKey(uncheckedOpenSpaces, currentLocationKey)
@@ -70,7 +71,7 @@ function doMapping()
 			local facingX, facingY, facingZ = World.getFacingBlock()
 			local facingLocationKey = Util.createLocationKey(facingX, facingZ)
 			if not (Util.hasKey(traversedOpenSpaces, facingLocationKey)) then
-				uncheckedOpenSpaces[facingLocationKey] = ""
+				uncheckedOpenSpaces[facingLocationKey] = "" -- Stops after the third one (second left)
 				print("Added left")
 			else
 				print("Left already traversed")
@@ -112,10 +113,10 @@ function doMapping()
 				addCurrentLocation()
 			else
 				local currentLocationKey = Util.createLocationKey(currentX, currentZ)
-				local keyExists = Util.getFirstKey(uncheckedOpenSpaces)
+				local keyExists = Util.getFirstKey(uncheckedOpenSpaces) -- Error
 				
 				if not (keyExists == nil) then
-					print("Pathfinding to " .. currentLocationKey)
+					print("Pathfinding to " .. keyExists)
 					local result = Pathfinding.processLocations(currentLocationKey, keyExists, traversedOpenSpaces)
 				
 					while not (currentFacing == 4) do
