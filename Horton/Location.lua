@@ -1,0 +1,69 @@
+-- 0.1.0
+
+x = nil
+y = nil
+z = nil
+
+facingNum = nil -- 0 = North, 1 = East, 2 = South, 3 = West
+
+previousLocation = {prevX = nil, prevY = nil, prevZ = nil}
+
+
+function getLocation()	
+	x, y, z = gps.locate()
+	
+	if (facingNum == nil) and (not (previousLocation.prevX == nil)) then
+		setDirection()
+	end
+end
+
+function setDirection()
+	if previousLocation.prevX < x then 
+		facingDirection = "east"
+		facingNum = 1
+	end
+	if previousLocation.prevX > x then 
+		facingDirection = "west"
+		facingNum = 3
+	end
+	if previousLocation.prevZ < z then 
+		facingDirection = "south"
+		facingNum = 2
+	end
+	if previousLocation.prevZ > z then 
+		facingDirection = "north"
+		facingNum = 0
+	end
+end
+
+function returnLocation()
+	getLocation()
+	return x, y, z
+end
+
+function getFacingDirection()
+	return facingNum
+end
+
+function getFacingBlock()
+	local facingX, facingY, facingZ = x, y, z
+	
+	if not (facingX == nil) then
+		if facingNum == 0 then facingZ = facingZ - 1 end
+		if facingNum == 1 then facingX = facingX + 1 end
+		if facingNum == 2 then facingZ = facingZ + 1 end
+		if facingNum == 3 then facingX = facingX - 1 end
+		
+		return facingX, facingY, facingZ
+	end
+	
+	return nil
+end
+
+function Reset()
+	previousLocation.prevX = x
+	previousLocation.prevY = y
+	previousLocation.prevZ = z
+end
+
+return {Reset = Reset, getFacingBlock = getFacingBlock, getFacingDirection = getFacingDirection, returnLocation = returnLocation, setDirection = setDirection, getLocation = getLocation}
