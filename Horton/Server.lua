@@ -1,8 +1,8 @@
--- 0.1.0
+-- 0.1.1
 
 function readMessages()
 	while true do
-		rednet.open("top")
+		rednet.open("left")
 		local senderId, message, protocol = rednet.receive()
 		if protocol == "start_mapping_response" then
 			print(message)
