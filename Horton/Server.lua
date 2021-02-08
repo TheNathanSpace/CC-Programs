@@ -1,4 +1,4 @@
--- 0.2.2
+-- 0.1.0
 
 function readMessages()
 	while true do
