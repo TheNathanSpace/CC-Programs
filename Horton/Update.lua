@@ -1,46 +1,26 @@
--- 0.4.2
+-- 0.1.0
 
 local Util = require("Util")
 
-shell.run("delete", "Comms")
+shell.run("delete", "Main")
 os.sleep(.4)
-shell.run("delete", "Items")
-os.sleep(.4)
-shell.run("delete", "live")
-os.sleep(.4)
-shell.run("delete", "Mapping")
-os.sleep(.4)
-shell.run("delete", "Movement")
-os.sleep(.4)
-shell.run("delete", "Pathfinding")
+shell.run("delete", "Location")
 os.sleep(.4)
 shell.run("delete", "Update")
 os.sleep(.4)
 shell.run("delete", "Util")
 os.sleep(.4)
-shell.run("delete", "World")
-os.sleep(.4)
 
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Comms.lua", "Comms")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/horton/Horton/Main.lua", "Main")
 os.sleep(.4)
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Items.lua", "Items")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/horton/Horton/Location.lua", "Location")
 os.sleep(.4)
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Live.lua", "live")
-os.sleep(.4)
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Mapping.lua", "Mapping")
-os.sleep(.4)
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Movement.lua", "Movement")
-os.sleep(.4)
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Pathfinding.lua", "Pathfinding")
-os.sleep(.4)
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/Update.lua", "Update")
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/horton/Horton/Update.lua", "Update")
 os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Util.lua", "Util")
 os.sleep(.4)
-shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Client/World.lua", "World")
-os.sleep(.4)
 
-local fileList = {"Util", "Comms", "Items", "live", "Mapping", "Movement", "Pathfinding", "Update", "World"}
+local fileList = {"Util", "Main", "Location", "Update"}
 
 term.clear()
 
