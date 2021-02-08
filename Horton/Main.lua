@@ -1,4 +1,4 @@
--- 0.1.2
+-- 0.1.3
 
 local Location = require("Location")
 
@@ -14,10 +14,6 @@ for i = 0, 13 do
 end
 
 function writeScreen()
-  for i = 0, 13 do
-    print(" ")
-    term.clear()
-  end
   local x, y, z = Location.returnLocation()
   print(x .. " " .. y .. " " .. z)
 end
