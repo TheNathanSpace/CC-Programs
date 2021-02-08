@@ -1,4 +1,4 @@
--- 0.1.0
+-- 0.1.1
 
 local Location = require("Location")
 
@@ -29,4 +29,8 @@ end
 function Tick()
 	Location.getLocation()
 	Reset()
+end
+
+while true do:
+  Tick()  
 end
