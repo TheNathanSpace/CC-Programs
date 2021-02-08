@@ -1,4 +1,4 @@
--- 0.1.3
+-- 0.1.4
 
 local Location = require("Location")
 
@@ -24,7 +24,8 @@ end
 
 function Tick()
 	Location.getLocation()
-	Reset()
+	writeScreen()
+  Reset()
 end
 
 while true do
