@@ -1,11 +1,51 @@
--- 0.1.0
+-- 0.1.1
 
 local Util = require("Util")
+local Location = require("Location")
 
 local clearSpots = {}
 local uncheckedClearSpots = {}
 
 function addSpot(x, z)
-  clearSpots[Util.createLocationKey(x, z)] = ""
+  local key = Util.createLocationKey(x, z)
+  if(not Util.hasKey(clearSpots, key) then
+    clearSpots[key] = ""
+  end
+  
+  print(key .. " is clear")
 end
 
+function checkRight()
+  Location.turnRight()
+  
+  if (not turtle.detect()) then
+    local x, y, z = Location.getFacingBlock()
+    addSpot(x, z)
+  end
+  
+end
+
+function checkLeft()
+  Location.turnLeft()
+  
+  if (not turtle.detect()) then
+    local x, y, z = Location.getFacingBlock()
+    addSpot(x, z)
+  end
+
+end
+
+function checkFront()
+  if (not turtle.detect()) then
+    local x, y, z = Location.getFacingBlock()
+    addSpot(x, z)
+  end
+end
+
+function checkLocations()
+  checkRight()
+  checkLeft()
+  checkFront()
+end
+
+return {checkLocations = checkLocations, checkLeft = checkLeft, checkRight = checkRight, checkFront = checkFront}

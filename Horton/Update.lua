@@ -19,8 +19,10 @@ shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/
 os.sleep(.4)
 shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/master/Util.lua", "Util")
 os.sleep(.4)
+shell.run("wget", "https://raw.githubusercontent.com/TheKingElessar/CC-Programs/horton/Horton/Mapping.lua", "Mapping")
+os.sleep(.4)
 
-local fileList = {"Util", "Main", "Location", "Update"}
+local fileList = {"Util", "Main", "Location", "Update", "Mapping"}
 
 term.clear()
 

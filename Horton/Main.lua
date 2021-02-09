@@ -2,6 +2,7 @@
 
 local Location = require("Location")
 local Movement = require("Movement")
+local Mapping = require("Mapping")
 
 shell.run("label", "set", "Horton")
 rednet.open("left")
@@ -11,6 +12,8 @@ function openComms()
 		local senderId, message, protocol = listenForMessage()		
 		if protocol == "start_mapping" then
 			rednet.send(senderId, "Mapping started", "start_mapping_response")
+      
+      Mapping.checkLocations()
 		end
 	end
 end
@@ -29,8 +32,6 @@ for i = 0, 13 do
 end
 
 function writeScreen()
-  local x, y, z = Location.returnLocation()
-  print(x .. " " .. y .. " " .. z .. " facing " .. Location.getFacingDirection())
 end
 
 function Reset()
@@ -43,7 +44,7 @@ function Tick()
 end
 
 function MainTick()
-  Movement.pinpointFacing()
+  Location.pinpointFacing()
   
   while true do
     Tick()

@@ -17,6 +17,28 @@ function getLocation()
 	end
 end
 
+function turnRight()
+  facingNum = facingNum + 1
+  
+  if (facingNum == 4) then
+    facingNum = 0
+  end
+  
+  turtle.turnRight()
+  
+end
+
+function turnLeft()
+  facingNum = facingNum - 1
+  
+  if (facingNum == -1) then
+    facingNum = 3
+  end
+
+  turtle.turnLeft()
+end
+
+
 function setDirection()
 	if previousLocation.prevX < x then 
 		facingDirection = "east"
@@ -60,10 +82,18 @@ function getFacingBlock()
 	return nil
 end
 
+function pinpointFacing()
+  while turtle.detect() do
+    turtle.turnLeft()
+  end
+  
+  turtle.forward()
+end
+
 function Reset()
 	previousLocation.prevX = x
 	previousLocation.prevY = y
 	previousLocation.prevZ = z
 end
 
-return {Reset = Reset, getFacingBlock = getFacingBlock, getFacingDirection = getFacingDirection, returnLocation = returnLocation, setDirection = setDirection, getLocation = getLocation}
+return {Reset = Reset, getFacingBlock = getFacingBlock, getFacingDirection = getFacingDirection, returnLocation = returnLocation, setDirection = setDirection, getLocation = getLocation, pinpointFacing = pinpointFacing}
