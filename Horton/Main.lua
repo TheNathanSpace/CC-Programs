@@ -1,6 +1,7 @@
 -- 0.1.4
 
 local Location = require("Location")
+local Movement = require("Movement")
 
 shell.run("label", "set", "Horton")
 rednet.open("left")
@@ -29,7 +30,7 @@ end
 
 function writeScreen()
   local x, y, z = Location.returnLocation()
-  print(x .. " " .. y .. " " .. z)
+  print(x .. " " .. y .. " " .. z .. " facing " .. Location.getFacingDirection())
 end
 
 function Reset()
@@ -39,12 +40,14 @@ end
 function Tick()
 	Location.getLocation()
 	writeScreen()
-  Reset()
 end
 
 function MainTick()
+  Movement.pinpointFacing()
+  
   while true do
-    Tick()  
+    Tick()
+    Reset()
   end
 end
 
