@@ -1,4 +1,4 @@
--- 0.1.2
+-- 0.1.3
 
 local Util = require("Util")
 local Location = require("Location")
@@ -12,7 +12,7 @@ function addSpot(x, z)
     clearSpots[key] = ""
   end
   
-  print(key .. " is clear")
+  rednet.broadcast(key .. " is clear", "start_mapping_response")
 end
 
 function checkRight()
