@@ -1,4 +1,4 @@
--- 0.1.5
+-- 0.1.6
 
 local Location = require("Location")
 local Mapping = require("Mapping")
@@ -39,7 +39,9 @@ end
 
 function Tick()
 	Location.getLocation()
+  Location.setDirection()
 	writeScreen()
+  
 end
 
 function MainTick()
