@@ -1,4 +1,4 @@
--- 0.1.3
+-- 0.1.4
 
 x = nil
 y = nil
@@ -11,7 +11,6 @@ previousLocation = {prevX = nil, prevY = nil, prevZ = nil}
 
 function getLocation()	
 	x, y, z = gps.locate()
-  print(x .. " " .. z)
 	
 	if (facingNum == nil) and (not (previousLocation.prevX == nil)) then
 		setDirection()
@@ -57,6 +56,8 @@ function setDirection()
 	if previousLocation.prevZ > z then 
 		facingNum = 0
 	end
+  
+  print(x .. " " .. y .. " " .. z .. " facing " .. facingNum)
 end
 
 function returnLocation()
