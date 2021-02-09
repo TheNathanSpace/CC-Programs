@@ -1,4 +1,4 @@
--- 0.1.2
+-- 0.1.3
 
 x = nil
 y = nil
@@ -41,20 +41,20 @@ end
 
 
 function setDirection()
+  if (previousLocation.prevX == nil) or (previousLocation.prevY == nil) or (previousLocation.prevZ == nil) then
+    return
+  end
+  
 	if previousLocation.prevX < x then 
-		facingDirection = "east"
 		facingNum = 1
 	end
 	if previousLocation.prevX > x then 
-		facingDirection = "west"
 		facingNum = 3
 	end
 	if previousLocation.prevZ < z then 
-		facingDirection = "south"
 		facingNum = 2
 	end
 	if previousLocation.prevZ > z then 
-		facingDirection = "north"
 		facingNum = 0
 	end
 end
