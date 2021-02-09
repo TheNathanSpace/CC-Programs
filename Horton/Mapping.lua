@@ -1,4 +1,4 @@
--- 0.1.1
+-- 0.1.2
 
 local Util = require("Util")
 local Location = require("Location")
@@ -8,7 +8,7 @@ local uncheckedClearSpots = {}
 
 function addSpot(x, z)
   local key = Util.createLocationKey(x, z)
-  if(not Util.hasKey(clearSpots, key) then
+  if(not Util.hasKey(clearSpots, key)) then
     clearSpots[key] = ""
   end
   

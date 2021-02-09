@@ -1,4 +1,4 @@
--- 0.1.0
+-- 0.1.1
 
 x = nil
 y = nil
@@ -96,4 +96,4 @@ function Reset()
 	previousLocation.prevZ = z
 end
 
-return {Reset = Reset, getFacingBlock = getFacingBlock, getFacingDirection = getFacingDirection, returnLocation = returnLocation, setDirection = setDirection, getLocation = getLocation, pinpointFacing = pinpointFacing}
+return {Reset = Reset, getFacingBlock = getFacingBlock, getFacingDirection = getFacingDirection, returnLocation = returnLocation, setDirection = setDirection, getLocation = getLocation, pinpointFacing = pinpointFacing, turnRight = turnRight, turnLeft = turnLeft}
