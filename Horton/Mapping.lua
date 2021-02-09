@@ -1,4 +1,4 @@
--- 0.1.3
+-- 0.1.4
 
 local Util = require("Util")
 local Location = require("Location")
@@ -23,6 +23,7 @@ function checkRight()
     addSpot(x, z)
   end
   
+  Location.turnLeft()
 end
 
 function checkLeft()
@@ -33,6 +34,7 @@ function checkLeft()
     addSpot(x, z)
   end
 
+  Location.turnRight()
 end
 
 function checkFront()
