@@ -1,4 +1,4 @@
--- 0.1.6
+-- 0.1.7
 
 local Location = require("Location")
 local Mapping = require("Mapping")
@@ -45,10 +45,16 @@ function Tick()
 end
 
 function MainTick()
-  Location.pinpointFacing()
+  local faced = false
   
   while true do
     Tick()
+    
+    if not faced then
+      Location.pinpointFacing()
+      faced = true
+    end
+    
     Reset()
   end
 end

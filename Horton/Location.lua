@@ -1,4 +1,4 @@
--- 0.1.4
+-- 0.1.5
 
 x = nil
 y = nil
@@ -56,8 +56,9 @@ function setDirection()
 	if previousLocation.prevZ > z then 
 		facingNum = 0
 	end
-  
-  print(x .. " " .. y .. " " .. z .. " facing " .. facingNum)
+  if not (facingNum == nil) then
+    print(x .. " " .. y .. " " .. z .. " facing " .. facingNum)
+  end
 end
 
 function returnLocation()
