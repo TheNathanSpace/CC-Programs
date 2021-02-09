@@ -1,7 +1,6 @@
--- 0.1.4
+-- 0.1.5
 
 local Location = require("Location")
-local Movement = require("Movement")
 local Mapping = require("Mapping")
 
 shell.run("label", "set", "Horton")
