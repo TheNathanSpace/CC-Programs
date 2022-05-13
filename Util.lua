@@ -1,4 +1,4 @@
--- 0.4.4
+-- 0.4.5
 
 function hasValue (tab, val)
 	for index, value in ipairs(tab) do
@@ -106,4 +106,38 @@ function removeKey(t, k)
 	return a
 end
 
-return {hasValue = hasValue, hasKey = hasKey, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable, printTable = printTable, split = split, createLocationKey = createLocationKey, parseLocationKey = parseLocationKey, getFirstKey = getFirstKey, removeKey = removeKey}
+function deepcopy(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[deepcopy(orig_key)] = deepcopy(orig_value)
+        end
+        setmetatable(copy, deepcopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
+
+function tablelength(T)
+  local count = 0
+  for _ in pairs(T) do count = count + 1 end
+  return count
+end
+
+function reverseTable(t)
+  local newTable = {}
+  local n = #t
+  local i = 1
+  while i < n do
+    newTable[i],newTable[n] = t[n],t[i]
+    i = i + 1
+    n = n - 1
+  end
+  
+  return newTable
+end
+
+return {hasValue = hasValue, hasKey = hasKey, trimSpaces = trimSpaces, isEmpty = isEmpty, saveTable = saveTable, loadTable = loadTable, printTable = printTable, split = split, createLocationKey = createLocationKey, parseLocationKey = parseLocationKey, getFirstKey = getFirstKey, removeKey = removeKey, deepcopy = deepcopy, tablelength = tablelength, reverseTable = reverseTable}

@@ -45,9 +45,16 @@ function checkFront()
 end
 
 function checkLocations()
+  -- these three will add the clear locations to the list
   checkRight()
   checkLeft()
   checkFront()
 end
+
+function map()
+  
+  
+end
+
 
 return {checkLocations = checkLocations, checkLeft = checkLeft, checkRight = checkRight, checkFront = checkFront}
